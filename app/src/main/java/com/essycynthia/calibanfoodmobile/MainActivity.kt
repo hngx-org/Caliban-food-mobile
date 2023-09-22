@@ -17,20 +17,14 @@ import androidx.core.view.WindowInsetsControllerCompat
 import com.essycynthia.calibanfoodmobile.inviteuser.InviteUserOrg
 import com.essycynthia.calibanfoodmobile.profilescreen.ProfilePage
 import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
-import com.essycynthia.calibanfoodmobile.withdraw.WithdrawPage
 
-//import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.AndroidEntryPoint
 
-//@AndroidEntryPoint
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-/*
 
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
-        window.statusBarColor = Color(0xFFFAFAFA).toArgb()
-*/
 
         setContent {
             CalibanFoodMobileTheme {

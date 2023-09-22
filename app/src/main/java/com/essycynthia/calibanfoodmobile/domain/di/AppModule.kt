@@ -20,13 +20,13 @@ object AppModule {
     fun provideRepository( api: FoodApi) : FreeLunchRepository{
         return FreeLunchRepository(api)
     }
-}
-@Provides
-@Singleton
-fun provideRetrofitSetup() : FoodApi{
-    return Retrofit.Builder()
-        .baseUrl(Constants.BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-        .create(FoodApi::class.java)
+    @Provides
+    @Singleton
+    fun provideRetrofitSetup() : FoodApi{
+        return Retrofit.Builder()
+            .baseUrl(Constants.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(FoodApi::class.java)
+    }
 }
