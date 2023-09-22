@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import com.essycynthia.calibanfoodmobile.colleaguescreen.StaffProfileScreen
 import com.essycynthia.calibanfoodmobile.inviteuser.InviteUserOrg
 import com.essycynthia.calibanfoodmobile.organizationfreelunch.CardData
 import com.essycynthia.calibanfoodmobile.organizationfreelunch.OrganizationFreeLunchReward
@@ -38,9 +39,10 @@ class MainActivity : ComponentActivity() {
                 ) {
                  //   Greeting()
                   //  ProfilePage()
-                    OrganizationFreeLunchReward(cards = sampleCardData() )
+                 //   OrganizationFreeLunchReward(cards = sampleCardData() )
                    // WithdrawPage()
                     //InviteUserOrg()
+                    StaffProfileScreen()
                 }
             }
         }
