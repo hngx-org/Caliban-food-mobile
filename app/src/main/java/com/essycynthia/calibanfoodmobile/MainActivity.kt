@@ -9,14 +9,29 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsControllerCompat
+import com.essycynthia.calibanfoodmobile.inviteuser.InviteUserOrg
+import com.essycynthia.calibanfoodmobile.profilescreen.ProfilePage
 import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
-import dagger.hilt.android.AndroidEntryPoint
+import com.essycynthia.calibanfoodmobile.withdraw.WithdrawPage
 
-@AndroidEntryPoint
+//import dagger.hilt.android.AndroidEntryPoint
+
+//@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+/*
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
+        window.statusBarColor = Color(0xFFFAFAFA).toArgb()
+*/
+
         setContent {
             CalibanFoodMobileTheme {
                 // A surface container using the 'background' color from the theme
@@ -25,6 +40,9 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     Greeting()
+                    //ProfilePage()
+                   // WithdrawPage()
+                    //InviteUserOrg()
                 }
             }
         }
