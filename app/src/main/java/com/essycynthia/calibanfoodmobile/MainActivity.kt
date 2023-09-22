@@ -50,12 +50,16 @@ import com.essycynthia.calibanfoodmobile.ui.theme.Neutral1
 import com.essycynthia.calibanfoodmobile.ui.theme.Neutral2
 import com.essycynthia.calibanfoodmobile.ui.theme.Primary
 import com.essycynthia.calibanfoodmobile.ui.theme.RegistrationScreen
+
+
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
         setContent {
             CalibanFoodMobileTheme {
                 // A surface container using the 'background' color from the theme
@@ -64,6 +68,12 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
+
+                 Greeting()
+                  //  ProfilePage()
+                    // OrganizationFreeLunchReward(cards = sampleCardData() )
+                   // WithdrawPage()
+                    //InviteUserOrg()
                 }
             }
         }
@@ -72,3 +82,10 @@ class MainActivity : ComponentActivity() {
 
 
 
+
+private fun sampleCardData(): List<CardData> {
+    return listOf(
+        CardData(R.drawable.orgbuyer, "UduakE", 100, 3),
+        // Add more CardData objects as needed
+    )
+}
