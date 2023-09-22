@@ -1,7 +1,9 @@
 package com.essycynthia.calibanfoodmobile.ui.theme.screens
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -33,6 +35,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -54,7 +57,7 @@ fun SendLunchRewardScreen(){
             title = { Text(text = "Send Lunch Reward") },
             modifier = Modifier.background(Color.White),
             navigationIcon = {
-                IconButton(onClick = { /*TODO*/ }) {
+                IconButton(onClick = { }) {
                     Icon(painter = painterResource(id = R.drawable.back_icon), contentDescription = null)
                 }
             },
@@ -94,23 +97,31 @@ fun SendLunchReward(){
             Spacer(modifier = Modifier.size(30.dp))
             Row(horizontalArrangement = Arrangement.Center, modifier = Modifier.fillMaxWidth()) {
                 Image(painter = painterResource(id = R.drawable.one_meal_img), contentDescription = null, contentScale = ContentScale.FillBounds ,modifier = Modifier
-                    .width(169.dp)
-                    .height(71.dp) )
+                    .width(173.dp)
+                    .height(71.dp)
+                    .clickable { }
+                )
                 Spacer(modifier = Modifier.size(15.dp))
                 Image(painter = painterResource(id = R.drawable.two_meal_img) , contentDescription = null, contentScale = ContentScale.FillBounds ,modifier = Modifier
-                    .width(169.dp)
-                    .height(71.dp))
+                    .width(173.dp)
+                    .height(71.dp)
+                    .clickable { }
+                )
             }
             Spacer(modifier = Modifier.size(20.dp))
             Row(
                 horizontalArrangement = Arrangement.spacedBy(15.dp, Alignment.CenterHorizontally), modifier = Modifier.fillMaxWidth()
             ) {
                 Image(painter = painterResource(id = R.drawable.three_meal_img) , contentDescription = null, contentScale = ContentScale.FillBounds ,modifier = Modifier
-                    .width(169.dp)
-                    .height(71.dp))
+                    .width(173.dp)
+                    .height(71.dp)
+                    .clickable { }
+                )
                 Image(painter = painterResource(id = R.drawable.four_meal_img) , contentDescription = null, contentScale = ContentScale.FillBounds ,modifier = Modifier
-                    .width(169.dp)
-                    .height(71.dp))
+                    .width(173.dp)
+                    .height(71.dp)
+                    .clickable {}
+                )
             }
             Spacer(modifier = Modifier.size(30.dp))
             Text(text = stringResource(R.string.compliment), modifier = Modifier.padding(bottom = 10.dp))
