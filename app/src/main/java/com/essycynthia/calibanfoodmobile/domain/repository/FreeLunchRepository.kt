@@ -147,4 +147,5 @@ class FreeLunchRepository @Inject constructor(
         } catch (e: Exception) {
             Resource.Error("An error occurred while fetching all lunches", null)
         }
+    }
 }

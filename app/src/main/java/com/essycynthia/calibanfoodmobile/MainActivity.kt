@@ -42,6 +42,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.essycynthia.calibanfoodmobile.organizationfreelunch.CardData
 import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
 import com.essycynthia.calibanfoodmobile.ui.theme.CreateAccountScreen
 import com.essycynthia.calibanfoodmobile.ui.theme.Grey
@@ -69,7 +70,7 @@ class MainActivity : ComponentActivity() {
                 ) {
 
 
-                 Greeting()
+                 //Greeting()
                   //  ProfilePage()
                     // OrganizationFreeLunchReward(cards = sampleCardData() )
                    // WithdrawPage()
