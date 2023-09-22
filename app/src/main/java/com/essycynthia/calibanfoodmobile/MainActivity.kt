@@ -43,6 +43,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
+import com.essycynthia.calibanfoodmobile.ui.theme.CreateAccountScreen
 import com.essycynthia.calibanfoodmobile.ui.theme.Grey
 import com.essycynthia.calibanfoodmobile.ui.theme.LoginScreen
 import com.essycynthia.calibanfoodmobile.ui.theme.Neutral1
@@ -62,10 +63,6 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                  /*  val login = LoginScreen()
-                    login.Login()*/
-                    val registrationScreen = RegistrationScreen()
-                    registrationScreen.register()
 
                 }
             }
@@ -73,10 +70,5 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun Greeting(){
-    CalibanFoodMobileTheme {
-    }
-}
+
 

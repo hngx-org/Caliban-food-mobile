@@ -27,7 +27,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-class RegistrationScreen {
+class CreateAccountScreen {
 
     @Composable
     fun register(modifier: Modifier = Modifier) {
@@ -56,7 +56,7 @@ class RegistrationScreen {
             )
             Spacer(modifier = Modifier.height(55.dp))
 
-            RegistrationFields(
+            CreateAccountFields(
                 modifier = modifier.fillMaxWidth(),
                 email = email,
                 password = password,
@@ -82,7 +82,7 @@ class RegistrationScreen {
     }
 
     @Composable
-    fun RegistrationFields(modifier: Modifier = Modifier.fillMaxWidth(), email: String, password: String, confirmPassword: String,
+    fun CreateAccountFields(modifier: Modifier = Modifier.fillMaxWidth(), email: String, password: String, confirmPassword: String,
                            onEmailChange: (String) -> Unit, onPasswordChange: (String) -> Unit,
                            onConfirmPasswordChanged: (String) -> Unit){
 
