@@ -37,9 +37,9 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
 
     }
-//    kotlinOptions {
-//        jvmTarget = "1.8"
-//    }
+   /*kotlinOptions {
+        jvmTarget = "1.8"
+    }*/
     buildFeatures {
         compose = true
     }
@@ -115,6 +115,9 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    //font
+    implementation("androidx.compose.ui:ui-text-google-fonts:1.4.3")
 }
 kapt {
     correctErrorTypes = true
