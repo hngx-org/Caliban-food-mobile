@@ -43,13 +43,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
-import com.essycynthia.calibanfoodmobile.ui.theme.CreateAccountScreen
-import com.essycynthia.calibanfoodmobile.ui.theme.Grey
-import com.essycynthia.calibanfoodmobile.ui.theme.LoginScreen
-import com.essycynthia.calibanfoodmobile.ui.theme.Neutral1
-import com.essycynthia.calibanfoodmobile.ui.theme.Neutral2
-import com.essycynthia.calibanfoodmobile.ui.theme.Primary
-import com.essycynthia.calibanfoodmobile.ui.theme.RegistrationScreen
+import com.essycynthia.calibanfoodmobile.withdraw.WithdrawPage
+
 
 
 import dagger.hilt.android.AndroidEntryPoint
