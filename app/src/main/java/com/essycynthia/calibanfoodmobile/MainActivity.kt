@@ -19,7 +19,6 @@ import com.essycynthia.calibanfoodmobile.organizationfreelunch.CardData
 import com.essycynthia.calibanfoodmobile.organizationfreelunch.OrganizationFreeLunchReward
 import com.essycynthia.calibanfoodmobile.profilescreen.ProfilePage
 import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
-import com.essycynthia.calibanfoodmobile.withdraw.WithdrawPage
 
 import dagger.hilt.android.AndroidEntryPoint
 
