@@ -1,4 +1,4 @@
-package com.essycynthia.calibanfoodmobile.withdraw
+package com.essycynthia.calibanfoodmobile.ui.withdrawal_screen
 
 
 import androidx.compose.foundation.Image
