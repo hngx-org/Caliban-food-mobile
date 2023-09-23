@@ -82,6 +82,15 @@ fun StaffProfileDetails(
     modifier: Modifier = Modifier,
     navController: NavHostController
 ) {
+    var image by remember { mutableStateOf(R.drawable.people) }
+
+    var name by remember { mutableStateOf("Fiyinfoluwa Isreal") }
+    var userName by remember { mutableStateOf("@fiyin") }
+    var role by remember { mutableStateOf("Product Designer") }
+    var membership by remember { mutableStateOf("Member of HNG Team") }
+    var location by remember { mutableStateOf("Lagos, Nigeria") }
+    var lunchRecieved by remember { mutableStateOf("10") }
+    var lunchGiven by remember { mutableStateOf("5") }
     var title by remember { mutableStateOf("Profile") }
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
 
@@ -145,7 +154,7 @@ fun StaffProfileDetails(
 
                     ) {
                     Image(
-                        painter = painterResource(id = staffProfile.imageId), modifier = Modifier
+                        painter = painterResource(image), modifier = Modifier
                             .clip(ShapeDefaults.Small)
                             .size(width = 343.dp, height = 270.dp)
                             .fillMaxWidth(),
@@ -153,15 +162,20 @@ fun StaffProfileDetails(
                     )
 
                     Text(
-                        text = staffProfile.name,
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onBackground
+                        text = name,
+                        fontSize = 13.sp,
+                        fontWeight = FontWeight(600),
+                        fontFamily = FontFamily(Font(R.font.poppinsemibold)),
+                        color = Color(0xFF333333),
+                        letterSpacing = 0.03.sp
                     )
-
                     Text(
-                        text = staffProfile.userName,
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onBackground
+                        text = userName,
+                        fontSize = 13.sp,
+                        fontWeight = FontWeight(600),
+                        fontFamily = FontFamily(Font(R.font.robotoregular)),
+                        color = Color(0xFF333333),
+                        letterSpacing = 0.03.sp
                     )
 
                     Row {
@@ -172,11 +186,13 @@ fun StaffProfileDetails(
                         )
 
                         Spacer(modifier = modifier.padding(start = 8.dp))
-
                         Text(
-                            text = staffProfile.jobRole,
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onBackground
+                            text = role,
+                            fontSize = 13.sp,
+                            fontWeight = FontWeight(600),
+                            fontFamily = FontFamily(Font(R.font.robotoregular)),
+                            color = Color(0xFF333333),
+                            letterSpacing = 0.03.sp
                         )
                     }
 
@@ -191,9 +207,12 @@ fun StaffProfileDetails(
                         Spacer(modifier = modifier.padding(start = 8.dp))
 
                         Text(
-                            text = staffProfile.department,
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onBackground
+                            text = membership,
+                            fontSize = 13.sp,
+                            fontWeight = FontWeight(600),
+                            fontFamily = FontFamily(Font(R.font.robotoregular)),
+                            color = Color(0xFF333333),
+                            letterSpacing = 0.03.sp
                         )
                     }
 
@@ -207,9 +226,13 @@ fun StaffProfileDetails(
                         Spacer(modifier = modifier.padding(start = 8.dp))
 
                         Text(
-                            text = staffProfile.location,
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onBackground
+                            text = location,
+                            fontSize = 13.sp,
+                            fontWeight = FontWeight(600),
+
+                           fontFamily = FontFamily(Font(R.font.robotoregular)),
+                            color = Color(0xFF333333),
+                            letterSpacing = 0.03.sp
                         )
                     }
 
@@ -277,21 +300,37 @@ fun StaffProfileDetails(
                                  )*/
 
                                 Spacer(modifier = modifier.padding(top = 8.dp))
+                              ///check
 
                                 Text(
                                     text = "Free Lunch Received",
-                                    color = Color.White,
-                                    style = MaterialTheme.typography.bodyMedium
+                                    modifier = Modifier.padding(top = 6.dp),
+
+                                    // Small Body (Medium)
+
+                                    fontSize = 13.sp,
+                                    fontFamily = FontFamily(Font(R.font.robotomedium)),
+                                    fontWeight = FontWeight(500),
+                                    color = Color(0xFFFFFFFF),
+                                    textAlign = TextAlign.Center,
+                                    letterSpacing = 0.03.sp,
                                 )
+
 
                                 Spacer(modifier = modifier.padding(top = 8.dp))
-
                                 Text(
-                                    text = "${staffProfile.freeLunchReceived}",
-                                    color = Color.White,
-                                    style = MaterialTheme.typography.headlineLarge,
-                                    modifier = modifier.padding(bottom = 8.dp)
+                                    text = lunchRecieved,
+
+                                    // H1 (Bold)
+
+                                    fontSize = 28.sp,
+                                    fontFamily = FontFamily(Font(R.font.poppinsbold)),
+                                    fontWeight = FontWeight(700),
+                                    color = Color(0xFFFFFFFF),
+                                    textAlign = TextAlign.Center,
+                                    letterSpacing = 0.07.sp,
                                 )
+
                             }
                         }
 
@@ -323,20 +362,35 @@ fun StaffProfileDetails(
                                    )*/
 
                                 Spacer(modifier = modifier.padding(top = 8.dp))
-
                                 Text(
                                     text = "Free Lunch Given",
-                                    color = Color.White,
-                                    style = MaterialTheme.typography.bodyMedium
+                                    modifier = Modifier.padding(top = 6.dp),
+
+                                    // Small Body (Medium)
+
+                                    fontSize = 13.sp,
+                                    fontFamily = FontFamily(Font(R.font.robotomedium)),
+                                    fontWeight = FontWeight(500),
+                                    color = Color(0xFFFFFFFF),
+                                    textAlign = TextAlign.Center,
+                                    letterSpacing = 0.03.sp,
                                 )
 
                                 Spacer(modifier = modifier.padding(top = 8.dp))
 
                                 Text(
-                                    text = "${staffProfile.freeLunchGiven}",
-                                    color = Color.White,
-                                    style = MaterialTheme.typography.headlineLarge
+                                    text = lunchGiven,
+
+                                    // H1 (Bold)
+
+                                    fontSize = 28.sp,
+                                    fontFamily = FontFamily(Font(R.font.poppinsbold)),
+                                    fontWeight = FontWeight(700),
+                                    color = Color(0xFFFFFFFF),
+                                    textAlign = TextAlign.Center,
+                                    letterSpacing = 0.07.sp,
                                 )
+
                             }
 
 

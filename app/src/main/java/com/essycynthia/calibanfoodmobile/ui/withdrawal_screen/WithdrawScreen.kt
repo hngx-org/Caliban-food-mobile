@@ -67,8 +67,7 @@ import com.essycynthia.calibanfoodmobile.R
 fun WithdrawPage() {
     var title by remember { mutableStateOf("Withdraw") }
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
-    val categories =
-        mutableStateListOf<String>("First bank Nigeria", "Zenith Bank", "UBA", "Opay", "Palmpay")
+    val categories = mutableStateListOf<String>("First bank Nigeria", "Zenith Bank", "UBA", "Opay", "Palmpay")
     var category by remember { mutableStateOf("") }
     val heightTextFields by remember { mutableStateOf(55.dp) }
     var textFieldSize by remember { mutableStateOf(Size.Zero) }
