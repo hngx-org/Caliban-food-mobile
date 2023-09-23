@@ -12,6 +12,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -90,8 +91,7 @@ fun RegistrationFields(
     onCurrencyChange: (String) -> Unit
 ) {
 
-
-    DetailsFields(
+    RegistrationDetailsFields(
         value = companyName,
         label = "Company Name",
         placeholder = "Enter your company name",
@@ -100,7 +100,7 @@ fun RegistrationFields(
 
     Spacer(modifier = Modifier.height(15.dp))
 
-    DetailsFields(
+    RegistrationDetailsFields(
         value = lunchPrice,
         label = "LunchPrice",
         placeholder = "Enter your lunch price",
@@ -109,7 +109,7 @@ fun RegistrationFields(
 
     Spacer(modifier = Modifier.height(15.dp))
 
-    DetailsFields(
+    RegistrationDetailsFields(
         value = currency,
         label = "Currency",
         placeholder = "Enter your currency",
@@ -122,7 +122,7 @@ fun RegistrationFields(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DetailsFields(
+fun RegistrationDetailsFields(
     modifier: Modifier = Modifier.fillMaxWidth(), value: String,
     label: String,
     placeholder: String,
@@ -133,6 +133,10 @@ fun DetailsFields(
 ) {
     OutlinedTextField(
         shape = RoundedCornerShape(5.dp),
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            focusedBorderColor = Primary,
+            focusedLabelColor = Grey
+        ),
         modifier = Modifier
             .fillMaxWidth(),
         value = value,
