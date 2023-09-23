@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.essycynthia.calibanfoodmobile"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.essycynthia.calibanfoodmobile"
@@ -37,9 +37,9 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
 
     }
-//    kotlinOptions {
-//        jvmTarget = "1.8"
-//    }
+   /*kotlinOptions {
+        jvmTarget = "1.8"
+    }*/
     buildFeatures {
         compose = true
     }
@@ -115,6 +115,16 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    //font Isaac
+    //implementation("androidx.compose.ui:ui-text-google-fonts:1.5.1")
+
+    //Icons Isaac
+    implementation ("androidx.compose.material:material-icons-extended:1.3.1")
+
+   //for splash Screen
+    implementation("androidx.core:core-splashscreen:1.0.1")
+
 }
 kapt {
     correctErrorTypes = true
