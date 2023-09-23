@@ -68,7 +68,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
+                    val createAccountScreen = LoginScreen()
+                    createAccountScreen.Login()
 
                  //Greeting()
                   //  ProfilePage()
