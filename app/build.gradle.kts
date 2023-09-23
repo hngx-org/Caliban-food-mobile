@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.essycynthia.calibanfoodmobile"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.essycynthia.calibanfoodmobile"
