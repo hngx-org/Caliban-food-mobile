@@ -9,6 +9,7 @@ data class ColleagueData (
 data class RewardHistory(
     val day : String,
     val colleagueDataList: List<ColleagueData>
+
 )
 // should be gotten from rest api this is test data, converts a list of a class to a of categories and lists eg day and list of coleagues
 val colleagues = listOf(
