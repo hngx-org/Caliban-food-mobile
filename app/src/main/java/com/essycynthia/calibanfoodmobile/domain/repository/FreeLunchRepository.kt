@@ -32,6 +32,7 @@ class FreeLunchRepository @Inject constructor(
             Resource.Error("An error occurred during login", null)
         }
     }
+
     suspend fun signup(signUpRequest: SignUpRequest): Resource<SignUpResponse> {
         return try {
             val response = api.signup(signUpRequest)
@@ -41,6 +42,7 @@ class FreeLunchRepository @Inject constructor(
         }
 
     }
+
     suspend fun createOrganization(createOrganizationRequest: CreateOrganizationRequest): Resource<SignUpResponse> {
         return try {
             val response = api.createOrganization(createOrganizationRequest)
@@ -73,7 +75,10 @@ class FreeLunchRepository @Inject constructor(
             val response = api.updateOrganizationLaunchWalletBalance(amount)
             Resource.Success(response)
         } catch (e: Exception) {
-            Resource.Error("An error occurred while updating organization launch wallet balance", null)
+            Resource.Error(
+                "An error occurred while updating organization launch wallet balance",
+                null
+            )
         }
     }
 
@@ -122,7 +127,11 @@ class FreeLunchRepository @Inject constructor(
         }
     }
 
-    suspend fun sendLunchRequest(receivers: List<String>, quantity: Int, note: String): Resource<SendLunchResponse> {
+    suspend fun sendLunchRequest(
+        receivers: List<String>,
+        quantity: Int,
+        note: String
+    ): Resource<SendLunchResponse> {
         return try {
             val response = api.sendLunchRequest(receivers, quantity, note)
             Resource.Success(response)

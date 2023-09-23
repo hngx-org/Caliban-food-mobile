@@ -122,6 +122,9 @@ dependencies {
     //Icons Isaac
     implementation ("androidx.compose.material:material-icons-extended:1.3.1")
 
+   //for splash Screen
+    implementation("androidx.core:core-splashscreen:1.0.1")
+
 }
 kapt {
     correctErrorTypes = true
