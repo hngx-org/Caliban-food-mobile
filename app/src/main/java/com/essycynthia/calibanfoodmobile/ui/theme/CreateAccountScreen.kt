@@ -17,6 +17,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -33,7 +34,10 @@ class CreateAccountScreen {
     fun register(modifier: Modifier = Modifier) {
         var email by remember { mutableStateOf("") }
         var password by remember { mutableStateOf("") }
+        var firstName by remember {mutableStateOf("")}
+        var lastName by remember { mutableStateOf("") }
         var confirmPassword by remember { mutableStateOf("") }
+
         //var showPassword by remember { mutableStateOf("false") }
 
 
@@ -59,10 +63,14 @@ class CreateAccountScreen {
             CreateAccountFields(
                 modifier = modifier.fillMaxWidth(),
                 email = email,
+                firstName = firstName,
+                lastName = lastName,
                 password = password,
                 confirmPassword = confirmPassword,
                 onEmailChange = {email = it
                 },
+                onFirstNameChanged = { firstName= it },
+                onLastNameChanged = {lastName = it },
                 onPasswordChange = {password = it
                 },
                 onConfirmPasswordChanged = {confirmPassword = it
@@ -82,8 +90,13 @@ class CreateAccountScreen {
     }
 
     @Composable
-    fun CreateAccountFields(modifier: Modifier = Modifier.fillMaxWidth(), email: String, password: String, confirmPassword: String,
-                           onEmailChange: (String) -> Unit, onPasswordChange: (String) -> Unit,
+    fun CreateAccountFields(modifier: Modifier = Modifier.fillMaxWidth(), email: String,
+                            firstName : String, lastName: String, password: String,
+                            confirmPassword: String,
+                           onEmailChange: (String) -> Unit,
+                           onFirstNameChanged: (String) -> Unit,
+                           onLastNameChanged: (String) -> Unit,
+                            onPasswordChange: (String) -> Unit,
                            onConfirmPasswordChanged: (String) -> Unit){
 
         var showPassword by remember {
@@ -95,6 +108,22 @@ class CreateAccountScreen {
             label ="Email" ,
             placeholder ="Enter your email address",
             onValueChaged = onEmailChange)
+
+        Spacer(modifier = Modifier.height(15.dp))
+
+        DetailsFields(
+            value = firstName ,
+            label ="FirstName" ,
+            placeholder ="Enter your first name",
+            onValueChaged = onFirstNameChanged)
+
+        Spacer(modifier = Modifier.height(15.dp))
+
+        DetailsFields(
+            value = lastName ,
+            label ="LastName" ,
+            placeholder ="Enter your last name",
+            onValueChaged = onLastNameChanged)
 
         Spacer(modifier = Modifier.height(15.dp))
 
@@ -126,10 +155,10 @@ class CreateAccountScreen {
         Spacer(modifier = Modifier.height(15.dp))
 
         DetailsFields(modifier = modifier.fillMaxWidth(),
-            value = password,
-            label = "Password",
+            value = confirmPassword,
+            label = "Confirm Password",
             placeholder = "Confirm Password",
-            onValueChaged = onPasswordChange,
+            onValueChaged = onConfirmPasswordChanged,
             trailingIcon = {
                 if(showPassword) {
                     IconButton(onClick = { showPassword = false}) {
@@ -166,6 +195,10 @@ class CreateAccountScreen {
                       onValueChaged : (String) -> Unit){
         OutlinedTextField(
             shape = RoundedCornerShape(5.dp),
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = Primary,
+                focusedLabelColor = Grey
+            ),
             modifier = Modifier
                 .fillMaxWidth(),
             value = value,
