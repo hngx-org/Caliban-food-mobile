@@ -38,11 +38,11 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                  //   Greeting()
-                  //  ProfilePage()
-                 //   OrganizationFreeLunchReward(cards = sampleCardData() )
+                  //ProfilePage()
+               //   OrganizationFreeLunchReward(cards = sampleCardData() )
                    // WithdrawPage()
                     //InviteUserOrg()
-                  //  StaffProfileScreen()
+                 //StaffProfileScreen()
                 }
             }
         }
@@ -53,10 +53,10 @@ fun Greeting(){
     Text(text = "Yay it's working!")
 }
 
-/*
+
 private fun sampleCardData(): List<CardData> {
     return listOf(
         CardData(R.drawable.orgbuyer, "UduakE", 100, 3),
         // Add more CardData objects as needed
     )
-}*/
+}

@@ -30,8 +30,10 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -52,6 +54,12 @@ import com.essycynthia.calibanfoodmobile.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun OrganizationFreeLunchReward(cards: List<CardData>) {
+    var orgFreeLunchBal by remember { mutableStateOf("10,000") }
+    var lunchSent by remember { mutableStateOf("100") }
+    var time by remember { mutableStateOf("3hrs") }
+    var recieverName by remember {
+        mutableStateOf("UduakE")
+    }
 
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
 // var cardDataList = listOf(CardData(R.drawable.orgbuyer,"UduakE",100,3))
@@ -101,7 +109,7 @@ fun OrganizationFreeLunchReward(cards: List<CardData>) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(
-                    top = 100.dp,
+                    top = 70.dp,
                     start = 20.dp,
                     end = 20.dp,
                     bottom = 24.dp
@@ -172,7 +180,7 @@ fun OrganizationFreeLunchReward(cards: List<CardData>) {
                     ) {
 
                         Text(
-                            text = "10,000",
+                            text = orgFreeLunchBal,
                             modifier = Modifier.padding(bottom = 4.dp),
 
                             // H1 (Bold)
@@ -287,7 +295,7 @@ fun OrganizationFreeLunchReward(cards: List<CardData>) {
             items(cards){  cardData ->
 
                 Card (
-                    modifier =      Modifier
+                    modifier = Modifier
                         .padding(top = 28.dp)
                         .width(344.dp)
                         .height(69.dp),
@@ -317,7 +325,7 @@ fun OrganizationFreeLunchReward(cards: List<CardData>) {
                         )
 
                         Text(
-                            text = "you sent${cardData.user} a reward",
+                            text = "you sent $recieverName a reward",
                             modifier = Modifier
                                 .padding(end = 35.dp)
                                 .width(144.dp)
@@ -333,7 +341,7 @@ fun OrganizationFreeLunchReward(cards: List<CardData>) {
                         )
 
                         Text(
-                            text = "${cardData.lunchReward}",
+                            text = lunchSent,
                             Modifier
                                 // .padding(end =5.dp)
                                 .width(27.dp)
@@ -371,7 +379,7 @@ fun OrganizationFreeLunchReward(cards: List<CardData>) {
                     ) {
 
                         Text(
-                            text = "${cardData.time}",
+                            text = time,
                             modifier  = Modifier
                                 .width(20.dp)
                                 .height(15.dp),

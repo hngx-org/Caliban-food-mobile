@@ -57,10 +57,19 @@ import com.essycynthia.calibanfoodmobile.R
 
 @Composable
 fun ProfilePage() {
-
-
+    var image by remember {
+        mutableStateOf(R.drawable.profileimage)
+    }
+    var name by remember { mutableStateOf("Gbemisola Owolabi") }
+    var userName by remember { mutableStateOf("@gbemiglad") }
+    var role by remember { mutableStateOf("Product Designer") }
+    var membership by remember { mutableStateOf("Member of HNG Team") }
+    var location by remember { mutableStateOf("Lagos, Nigeria") }
+    var lunchRecieved by remember { mutableStateOf("14") }
+    var lunchGiven by remember { mutableStateOf("10") }
     var title by remember { mutableStateOf("Profile") }
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
+
 
 
     Scaffold(
@@ -94,7 +103,7 @@ fun ProfilePage() {
             item {
 
                 Image(
-                    painter = painterResource(id = R.drawable.profileimage),
+                    painter = painterResource(image),
                     contentDescription = "profile image",
                     modifier = Modifier
                         .width(343.dp)
@@ -114,7 +123,7 @@ fun ProfilePage() {
                     // Small Body (Medium)
 
                     Text(
-                        text = "Gbemisola Owolabi",
+                        text = name,
                         fontSize = 13.sp,
                         fontWeight = FontWeight(600),
                         fontFamily = FontFamily(Font(R.font.robotomedium)),
@@ -124,7 +133,7 @@ fun ProfilePage() {
 
                     // Small Body (Regular)
                     Text(
-                        text = "@gbemiglad",
+                        text = userName,
                         modifier = Modifier
                             .padding(top = 10.dp),
                         fontSize = 12.sp,
@@ -150,7 +159,7 @@ fun ProfilePage() {
                         Spacer(modifier = Modifier.width(6.dp))
 
                         Text(
-                            text = "Product Designer",
+                            text = role,
                             // Small Body (Regular)
                             fontSize = 12.sp,
                             lineHeight = 18.sp,
@@ -176,7 +185,7 @@ fun ProfilePage() {
                         Spacer(modifier = Modifier.width(6.dp))
 
                         Text(
-                            text = "Member of HNG Team",
+                            text = membership,
                             // Small Body (Regular)
                             fontSize = 12.sp,
                             lineHeight = 18.sp,
@@ -206,7 +215,7 @@ fun ProfilePage() {
                         Spacer(modifier = Modifier.width(6.dp))
 
                         Text(
-                            text = "Lagos, Nigeria",
+                            text = location,
                             // Small Body (Regular)
                             fontSize = 12.sp,
                             lineHeight = 18.sp,
@@ -284,7 +293,7 @@ fun ProfilePage() {
                                     letterSpacing = 0.03.sp,
                                 )
                                 Text(
-                                    text = "14",
+                                    text = lunchRecieved,
 
                                     // H1 (Bold)
 
@@ -349,7 +358,7 @@ fun ProfilePage() {
                                     letterSpacing = 0.03.sp,
                                 )
                                 Text(
-                                    text = "10",
+                                    text = lunchGiven,
 
                                     // H1 (Bold)
 

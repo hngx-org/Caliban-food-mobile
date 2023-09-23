@@ -56,12 +56,8 @@ import com.essycynthia.calibanfoodmobile.R
 fun InviteUserOrg() {
 
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
-    var recipient by remember {
-        mutableStateOf("owolabigbemisola@gmail.com, Iyanu@gmail.com")
-    }
-    var message by remember {
-        mutableStateOf("Encourage users to join honorwave and start sending free lunch to their peer.")
-    }
+    var recipient by remember { mutableStateOf("owolabigbemisola@gmail.com, Iyanu@gmail.com") }
+    var message by remember { mutableStateOf("Encourage users to join honorwave and start sending free lunch to their peer.") }
     var inviteDialog by remember { mutableStateOf(false) }
     Scaffold(
         topBar = {
