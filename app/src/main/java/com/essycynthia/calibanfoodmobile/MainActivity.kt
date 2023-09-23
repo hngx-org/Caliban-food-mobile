@@ -9,19 +9,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsControllerCompat
-import com.essycynthia.calibanfoodmobile.colleaguescreen.StaffProfileScreen
-import com.essycynthia.calibanfoodmobile.inviteuser.InviteUserOrg
 import com.essycynthia.calibanfoodmobile.organizationfreelunch.CardData
-import com.essycynthia.calibanfoodmobile.organizationfreelunch.OrganizationFreeLunchReward
-import com.essycynthia.calibanfoodmobile.profilescreen.ProfilePage
 import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
-import com.essycynthia.calibanfoodmobile.withdraw.WithdrawPage
-
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
