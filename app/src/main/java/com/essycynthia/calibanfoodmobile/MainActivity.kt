@@ -1,8 +1,11 @@
 package com.essycynthia.calibanfoodmobile
 
+
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -32,6 +35,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.NavController
+import com.essycynthia.calibanfoodmobile.dummyData.RewardHistory
+import com.essycynthia.calibanfoodmobile.ui.BottomScreens
+import com.essycynthia.calibanfoodmobile.ui.Navigation
 
 import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -65,6 +81,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.Q)
 @Composable
 fun FreeLunchDashBoard(
     freeLunchAmount: Int,
