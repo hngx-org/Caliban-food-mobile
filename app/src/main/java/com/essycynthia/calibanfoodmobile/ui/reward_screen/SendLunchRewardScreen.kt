@@ -1,4 +1,4 @@
-package com.essycynthia.calibanfoodmobile.ui.theme.screens
+package com.essycynthia.calibanfoodmobile.ui.reward_screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -23,10 +22,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -42,13 +37,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.essycynthia.calibanfoodmobile.R
-import com.essycynthia.calibanfoodmobile.dummyData.colleague
 import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SendLunchRewardScreen(){
+fun SendLunchRewardScreen(navController: NavController){
     Column {
         TopAppBar(
             title = { Text(text = "Send Lunch Reward") },
@@ -66,13 +61,13 @@ fun SendLunchRewardScreen(){
                 }
             }
         )
-        SendLunchReward()
+        SendLunchReward(navController)
     }
 
 }
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SendLunchReward(){
+fun SendLunchReward(navController: NavController){
     var text by rememberSaveable{ mutableStateOf("") }
     var complimentText by rememberSaveable{ mutableStateOf("") }
     Surface(modifier= Modifier
@@ -125,10 +120,10 @@ fun SendLunchReward(){
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    CalibanFoodMobileTheme {
-        SendLunchRewardScreen()
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun DefaultPreview() {
+//    CalibanFoodMobileTheme {
+//        SendLunchRewardScreen()
+//    }
+//}
