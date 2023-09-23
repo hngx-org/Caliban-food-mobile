@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Caliban Food Mobile</string>
+    <string name="appreciation_message">Thank you for your support on the project proposal. The proposal was approved and we are starting work on it soon.</string>
+    <string name="fiyinfoluwa">Fiyinfoluwa</string>
+    <string name="recipient">Recipient</string>
+    <string name="compliment">Compliment</string>
 </resources>

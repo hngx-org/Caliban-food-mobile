@@ -46,13 +46,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.essycynthia.calibanfoodmobile.R
 
 
 
 
 @Composable
-fun StaffProfileScreen(){
+fun StaffProfileScreen(navController: NavHostController){
     StaffProfileDetails(
         staffProfile = StaffProfile(
             imageId = R.drawable.people,
@@ -63,8 +65,11 @@ fun StaffProfileScreen(){
             department = "Member of HNG Team",
             location = "Lagos, Nigeria",
             freeLunchGiven = 10 ,
-            freeLunchReceived = 5
-        )
+            freeLunchReceived = 5,
+
+
+        ),
+        navController = navController
     )
 }
 
@@ -74,7 +79,8 @@ fun StaffProfileScreen(){
 @Composable
 fun StaffProfileDetails(
     staffProfile: StaffProfile,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController: NavHostController
 ) {
     var image by remember { mutableStateOf(R.drawable.people) }
 
@@ -232,7 +238,7 @@ fun StaffProfileDetails(
 
 
                     Button(
-                        onClick = {}, modifier = Modifier
+                        onClick = {navController.navigate("send_lunch")}, modifier = Modifier
                             .padding(top = 20.dp)
                             .fillMaxWidth()
                             .width(343.dp)

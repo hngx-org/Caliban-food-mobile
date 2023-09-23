@@ -8,12 +8,12 @@ plugins {
 
 android {
     namespace = "com.essycynthia.calibanfoodmobile"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.essycynthia.calibanfoodmobile"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -37,9 +37,9 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
 
     }
-//    kotlinOptions {
-//        jvmTarget = "1.8"
-//    }
+   /*kotlinOptions {
+        jvmTarget = "1.8"
+    }*/
     buildFeatures {
         compose = true
     }
@@ -64,6 +64,8 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     implementation ("androidx.navigation:navigation-compose:2.5.3")
+    implementation ("androidx.compose.material:material:1.4.2")
+
 
 
     //Serialization
@@ -81,6 +83,10 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1")
 
+    //emoji
+    implementation ("androidx.emoji2:emoji2-emojipicker:1.4.0-beta05")
+
+
     // Glide
     implementation ("com.github.bumptech.glide:glide:4.16.0")
 
@@ -95,6 +101,7 @@ dependencies {
     //Dagger-Hilt dependencies
 
     implementation("com.google.dagger:hilt-android:2.46.1")
+    implementation("androidx.compose.ui:ui-android:1.5.1")
     kapt("com.google.dagger:hilt-android-compiler:2.46.1")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
@@ -115,6 +122,16 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    //font Isaac
+    //implementation("androidx.compose.ui:ui-text-google-fonts:1.5.1")
+
+    //Icons Isaac
+    implementation ("androidx.compose.material:material-icons-extended:1.3.1")
+
+   //for splash Screen
+    implementation("androidx.core:core-splashscreen:1.0.1")
+
 }
 kapt {
     correctErrorTypes = true
