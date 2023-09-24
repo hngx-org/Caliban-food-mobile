@@ -1,5 +1,8 @@
 package com.essycynthia.calibanfoodmobile.ui.create_account_screen
 
+import CreateAccountViewModel
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,6 +15,7 @@ import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -19,14 +23,18 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.SignUpRequest
 import com.essycynthia.calibanfoodmobile.ui.Screens
@@ -39,11 +47,11 @@ import com.essycynthia.calibanfoodmobile.ui.theme.Neutral2
 import com.essycynthia.calibanfoodmobile.ui.theme.Primary
 
 
+@RequiresApi(Build.VERSION_CODES.Q)
 @Composable
-    fun CreateAccountScreen(modifier: Modifier = Modifier) {
-//    val viewModel: CreateAccountViewModel = hiltViewModel()
-    val navController = rememberNavController()
-    UserAuthenticationNavGraph(navController = navController)
+    fun CreateAccountScreen(modifier: Modifier = Modifier,navController: NavController) {
+    val viewModel: CreateAccountViewModel = hiltViewModel()
+//    val navController = rememberNavController()
 
         var email by remember { mutableStateOf("") }
         var password by remember { mutableStateOf("") }
@@ -92,22 +100,25 @@ import com.essycynthia.calibanfoodmobile.ui.theme.Primary
 
             Spacer(modifier = Modifier.height(55.dp))
             // Observe the state
-//            val createAccountState by viewModel.createAccountState.collectAsState()
+            val createAccountState by viewModel.createAccountState.collectAsState()
 
-//            // Handle navigation and error display
-//            if (createAccountState.isLoading) {
-//                CircularProgressIndicator()
-//            } else {
-//                if (createAccountState.success != null) {
-//                    // Signup was successful, navigate to another screen
-//                    navController.navigate(Screens.LoginScreen.route)
-//                } else if (createAccountState.error != null) {
-//                    // Display error message
+            // Handle navigation and error display
+            if (createAccountState.isLoading) {
+                CircularProgressIndicator()
+            } else {
+                if (createAccountState.success != null) {
+                    // Signup was successful, navigate to another screen
+                    viewModel.signup(SignUpRequest(email, firstName, lastName, password, phoneNumber))
+                    navController.navigate(Screens.LoginScreen.route)
+                } else if (createAccountState.error != null) {
+                    // Display error message
 //                    Text(text = createAccountState.error!!, color = Color.Red)
-//                }
-//            }
+                    Text(text = "Try again later")
+
+                }
+            }
             Button(onClick = {
-//                             viewModel.signup(SignUpRequest(email,firstName,lastName,password,phoneNumber))
+                viewModel.signup(SignUpRequest(email, firstName, lastName, password, phoneNumber))
                 navController.navigate(Screens.LoginScreen.route)
 
             },

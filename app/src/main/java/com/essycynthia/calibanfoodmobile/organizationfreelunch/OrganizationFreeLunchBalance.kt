@@ -7,6 +7,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -25,6 +27,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -293,110 +296,72 @@ fun OrganizationFreeLunchReward(cards: List<CardData>) {
 
 
             items(cards){  cardData ->
-
-                Card (
-                    modifier = Modifier
-                        .padding(top = 28.dp)
-                        .width(344.dp)
-                        .height(69.dp),
-                    colors = CardDefaults.cardColors(
-                        containerColor = Color(0xFFFFFFFF)
-                    ),
-
-                    shape = RoundedCornerShape(size = 5.dp)
-                    //.padding(start = 15.dp, top = 11.dp, end = 15.dp, bottom = 11.dp)
-
+                Surface(
+                    onClick = { /*Navigate to reward screen */ },
+                    color = Color.White,
+                    modifier = Modifier.padding(horizontal = 16.dp),
+                    shape = RoundedCornerShape(5.dp)
                 ){
-                    Row(
-                        modifier = Modifier.padding(top = 11.dp, start = 15.dp, bottom = 11.dp, end = 15.dp),
-                        horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally),
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        // Child views.
-
-                        Image(
-                            painter = painterResource(id = cardData.userImageId),
-                            contentDescription = "image description",
-                            contentScale = ContentScale.FillBounds,
-                            modifier = Modifier
-                                .padding(end = 10.dp)
-                                .width(30.dp)
-                                .height(30.dp)
-                        )
-
-                        Text(
-                            text = "you sent $recieverName a reward",
-                            modifier = Modifier
-                                .padding(end = 35.dp)
-                                .width(144.dp)
-                                .height(18.dp),
-                            style = TextStyle(
-                                fontSize = 12.sp,
-                                lineHeight = 18.sp,
-                                fontFamily = FontFamily(Font(R.font.robotomedium)),
-                                fontWeight = FontWeight(400),
-                                color = Color(0xFF333333),
-                                letterSpacing = 0.03.sp,
+                    Column(modifier = Modifier.padding(horizontal = 15.dp, vertical = 11.dp)) {
+                        Row (
+                            horizontalArrangement = Arrangement.Center,
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.fillMaxWidth()
+                        ){
+                            Image(painter = painterResource(id = R.drawable.orgbuyer), contentDescription = null, contentScale = ContentScale.FillBounds,
+                                modifier = Modifier
+                                    .size(30.dp)
+                                    .clip(CircleShape)
                             )
-                        )
+                            Spacer(modifier = Modifier.size(10.dp))
+                            Text(
+                                text =  "you sent $recieverName a reward",
+                                style = TextStyle(
+                                    fontSize = 12.sp,
+                                    lineHeight = 18.sp,
+                                    fontFamily = FontFamily(Font(R.font.roboto)),
+                                    fontWeight = FontWeight(500),
+                                    color = Color(0xFF333333),
+                                    letterSpacing = 0.03.sp,
+                                ),
+                                modifier = Modifier.weight(1f))
 
-                        Text(
-                            text = lunchSent,
-                            Modifier
-                                // .padding(end =5.dp)
-                                .width(27.dp)
-                                .height(24.dp),
-
-
-                            // H3 (Semi Bold)
-                            style = TextStyle(
-                                fontSize = 16.sp,
-                                fontFamily = FontFamily(Font(R.font.poppinsemibold)),
-                                fontWeight = FontWeight(600),
-                                color = Color(0xFFFF9405),
-                                letterSpacing = 0.02.sp,
+                            Text(
+                                text = lunchSent,
+                                style = TextStyle(
+                                    fontSize = 16.sp,
+                                    fontFamily = FontFamily(Font(R.font.poppins)),
+                                    fontWeight = FontWeight(600),
+                                    color = Color(0xFFFF9405),
+                                    letterSpacing = 0.02.sp,
+                                )
                             )
-                        )
 
-                        Image(
-                            painter = painterResource(id = R.drawable.emojionepotoffood),
-                            contentDescription = "image description",
-                            contentScale = ContentScale.None,
-                            modifier = Modifier
-                                .padding(start = 1.dp)
-                            // .width(16.dp)
-                            //  .height(16.dp)
-                            // .size(20.dp)
-                        )
+                            Image(
+                                painter = painterResource(id = R.drawable.pot_of_food), contentDescription = null,contentScale = ContentScale.FillBounds,
+                                modifier = Modifier
+                                    .size(16.dp)
+                                    .padding(1.dp)
+                            )
+                        }
+                        Row(
+                            horizontalArrangement = Arrangement.End,
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Text(
+                                text = time,
+                                style = TextStyle(
+                                    fontSize = 10.sp,
+                                    lineHeight = 15.sp,
+                                    fontFamily = FontFamily(Font(R.font.roboto)),
+                                    fontWeight = FontWeight(400),
+                                    color = Color(0xFF75818F),
+                                    letterSpacing = 0.04.sp,
+                                )
+                            )
+                        }
                     }
-
-                    Column(
-                        modifier = Modifier
-                            .width(314.dp)
-                            .height(47.dp),
-                        verticalArrangement = Arrangement.spacedBy(2.dp, Alignment.Bottom),
-                        horizontalAlignment = Alignment.End,
-                    ) {
-
-                        Text(
-                            text = time,
-                            modifier  = Modifier
-                                .width(20.dp)
-                                .height(15.dp),
-
-                            // Caption
-                            style = TextStyle(
-                                fontSize = 10.sp,
-                                lineHeight = 15.sp,
-                                fontFamily = FontFamily(Font(R.font.robotoregular)),
-                                fontWeight = FontWeight(400),
-                                color = Color(0xFF75818F),
-                                letterSpacing = 0.04.sp,
-                            )
-                        )
-                        // Child views.
-                    }
-
+                }
 
 
                     // Child views.
@@ -414,5 +379,114 @@ fun OrganizationFreeLunchReward(cards: List<CardData>) {
 
     }
 
-}
+
+
+
+/*   Card (
+                 modifier = Modifier
+                     .padding(top = 28.dp)
+                     .width(344.dp)
+                     .height(69.dp),
+                 colors = CardDefaults.cardColors(
+                     containerColor = Color(0xFFFFFFFF)
+                 ),
+
+                 shape = RoundedCornerShape(size = 5.dp)
+                 //.padding(start = 15.dp, top = 11.dp, end = 15.dp, bottom = 11.dp)
+
+             ){
+                 Row(
+                     modifier = Modifier.padding(top = 11.dp, start = 15.dp, bottom = 11.dp, end = 15.dp),
+                     horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally),
+                     verticalAlignment = Alignment.CenterVertically,
+                 ) {
+                     // Child views.
+
+                     Image(
+                         painter = painterResource(id = cardData.userImageId),
+                         contentDescription = "image description",
+                         contentScale = ContentScale.FillBounds,
+                         modifier = Modifier
+                             .padding(end = 10.dp)
+                             .width(30.dp)
+                             .height(30.dp)
+                     )
+
+                     Text(
+                         text = "you sent $recieverName a reward",
+                         modifier = Modifier
+                             .padding(end = 35.dp)
+                             .width(144.dp)
+                             .height(18.dp),
+                         style = TextStyle(
+                             fontSize = 12.sp,
+                             lineHeight = 18.sp,
+                             fontFamily = FontFamily(Font(R.font.robotomedium)),
+                             fontWeight = FontWeight(400),
+                             color = Color(0xFF333333),
+                             letterSpacing = 0.03.sp,
+                         )
+                     )
+
+                     Text(
+                         text = lunchSent,
+                         Modifier
+                             // .padding(end =5.dp)
+                             .width(27.dp)
+                             .height(24.dp),
+
+
+                         // H3 (Semi Bold)
+                         style = TextStyle(
+                             fontSize = 16.sp,
+                             fontFamily = FontFamily(Font(R.font.poppinsemibold)),
+                             fontWeight = FontWeight(600),
+                             color = Color(0xFFFF9405),
+                             letterSpacing = 0.02.sp,
+                         )
+                     )
+
+                     Image(
+                         painter = painterResource(id = R.drawable.emojionepotoffood),
+                         contentDescription = "image description",
+                         contentScale = ContentScale.None,
+                         modifier = Modifier
+                             .padding(start = 1.dp)
+                         // .width(16.dp)
+                         //  .height(16.dp)
+                         // .size(20.dp)
+                     )
+                 }
+
+                 Column(
+                     modifier = Modifier
+                         .width(314.dp)
+                         .height(47.dp),
+                     verticalArrangement = Arrangement.spacedBy(2.dp, Alignment.Bottom),
+                     horizontalAlignment = Alignment.End,
+                 ) {
+
+                     Text(
+                         text = time,
+                         modifier  = Modifier
+                             .width(20.dp)
+                             .height(15.dp),
+
+                         // Caption
+                         style = TextStyle(
+                             fontSize = 10.sp,
+                             lineHeight = 15.sp,
+                             fontFamily = FontFamily(Font(R.font.robotoregular)),
+                             fontWeight = FontWeight(400),
+                             color = Color(0xFF75818F),
+                             letterSpacing = 0.04.sp,
+                         )
+                     )
+                     // Child views.
+                 }
+
+
+*/
+
+
 

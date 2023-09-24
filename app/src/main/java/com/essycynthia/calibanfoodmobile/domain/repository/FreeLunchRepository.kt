@@ -17,6 +17,7 @@ import com.essycynthia.calibanfoodmobile.data.remote.data_classes.UserProfileRes
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.UserResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.UsersResponse
 import com.essycynthia.calibanfoodmobile.data.remote.dto.CreateOrganizationRequest
+import com.essycynthia.calibanfoodmobile.data.remote.dto.SignUpResponseDto
 import com.essycynthia.calibanfoodmobile.data.remote.dto.StaffSignUpRequest
 import com.essycynthia.calibanfoodmobile.util.Resource
 import javax.inject.Inject
@@ -33,12 +34,13 @@ class FreeLunchRepository @Inject constructor(
         }
     }
 
-    suspend fun signup(signUpRequest: SignUpRequest) {
-         try {
-             api.signup(signUpRequest)
+    suspend fun signup(signUpRequest: SignUpRequest) : Resource<SignUpResponseDto> {
+         return try {
+            val response= api.signup(signUpRequest)
+             Resource.Success(response)
         } catch (e: Exception) {
             Resource.Error("An error occurred during signup", null)
-             throw e
+
          }
 
     }
