@@ -80,26 +80,20 @@ fun ProfilePage() {
                         color = Color(0xFF333333),
                         letterSpacing = 0.02.sp
                     )
+
                 },
                 actions = {
-                    IconButton(onClick = { }) {
-                        Icon(
-                            imageVector = Icons.Default.ExitToApp,
-                            contentDescription = "Logout"
-                        )
-
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(imageVector = Icons.Default.ExitToApp, contentDescription = "logout")
 
                     }
                 },
-
                 colors = TopAppBarDefaults.smallTopAppBarColors(
                     containerColor = Color.White,
                     titleContentColor = Color(0xFF333333)
-                ),
+                ), scrollBehavior = scrollBehavior
 
 
-
-                scrollBehavior = scrollBehavior
             )
         }
 
@@ -394,4 +388,6 @@ fun ProfilePage() {
 
         }
     }
+
+
 }
