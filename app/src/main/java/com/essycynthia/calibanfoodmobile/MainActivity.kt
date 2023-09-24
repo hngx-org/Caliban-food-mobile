@@ -7,7 +7,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -47,9 +46,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
 import com.essycynthia.calibanfoodmobile.dummyData.RewardHistory
-import com.essycynthia.calibanfoodmobile.ui.BottomScreens
-import com.essycynthia.calibanfoodmobile.ui.Navigation
-
+import com.essycynthia.calibanfoodmobile.ui.navigation.user_authenticated_nav.UserAuthenticatedNavigation
 import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -71,7 +68,8 @@ class MainActivity : ComponentActivity() {
 
                     actionBar?.hide()
                     installSplashScreen()
-                    Navigation()
+//                    Navigation()
+                    UserAuthenticatedNavigation()
 //                    HomeScreen()
 
 
@@ -87,8 +85,24 @@ class MainActivity : ComponentActivity() {
 fun FreeLunchDashBoard(
     freeLunchAmount: Int,
     modifier: Modifier = Modifier,
-    navController: NavController
+   navController: NavController
 ) {
+   /* val navController = rememberNavController()
+    NavHost(navController = navController, startDestination = BottomScreens.HomeScreen.route ){
+        composable(
+            route = BottomScreens.HomeScreen.route
+        ){
+            HomeScreen()
+        }
+        composable(
+            BottomScreens.WithdrawalScreen.route
+        ){
+            WithdrawPage()
+        }
+    }
+*/
+
+
     Card(
         //  color = Color(0xFFFF9405),
         colors = CardDefaults.cardColors(
@@ -99,7 +113,7 @@ fun FreeLunchDashBoard(
             //.clip(shape = ShapeDefaults.Small)
             .fillMaxWidth()
             .height(170.dp)
-            .padding(start = 16.dp, end = 16.dp, )
+            .padding(start = 16.dp, end = 16.dp,)
 
     ) {
         Column(
@@ -160,7 +174,13 @@ fun FreeLunchDashBoard(
 
 
             Button(
-                onClick = { navController.navigate(BottomScreens.WithdrawalScreen.route)},
+
+
+                        onClick = {
+                         ///   navController.navigate(BottomScreens.WithdrawalScreen.route)
+                                 // navController.navigate("withdraw_screen")
+
+                          },
               //  onClick = { navController.navigate(BottomScreens.WithdrawalScreen.route)},
                 enabled = true,
                 colors = ButtonDefaults.buttonColors(
@@ -220,7 +240,7 @@ fun SendLunchReward(modifier: Modifier = Modifier) {
                     text = "Recognize your colleague for their \n " +
                             "outstanding work by sending them \n" +
                             "Free Lunch rewards. \uD83D\uDC4F \uD83C\uDF1F",
-                    modifier =Modifier
+                    modifier = Modifier
                         .width(198.dp)
                         .height(54.dp),
 
@@ -238,7 +258,7 @@ fun SendLunchReward(modifier: Modifier = Modifier) {
 
                 Button(
                     modifier = modifier.padding(top = 10.dp),
-                    onClick = { /*TODO*/ },
+                    onClick = { },
                     enabled = true,
                     colors = ButtonDefaults.buttonColors(Color(0xFFFF9405)),
                     shape = ShapeDefaults.Small
