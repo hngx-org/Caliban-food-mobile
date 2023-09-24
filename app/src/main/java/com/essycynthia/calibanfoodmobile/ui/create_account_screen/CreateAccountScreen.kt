@@ -19,6 +19,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -28,15 +29,38 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+import androidx.navigation.compose.rememberNavController
+import com.essycynthia.calibanfoodmobile.data.remote.data_classes.SignUpRequest
+import com.essycynthia.calibanfoodmobile.ui.Screens
+import com.essycynthia.calibanfoodmobile.ui.login_screen.LoginScreen
+import com.essycynthia.calibanfoodmobile.ui.navigation.user_authenticated_nav.UserAuthenticationNavGraph
+import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
+import com.essycynthia.calibanfoodmobile.ui.theme.Grey
+import com.essycynthia.calibanfoodmobile.ui.theme.Neutral1
+import com.essycynthia.calibanfoodmobile.ui.theme.Neutral2
+import com.essycynthia.calibanfoodmobile.ui.theme.Primary
+
 class CreateAccountScreen {
 
     @Composable
     fun register(modifier: Modifier = Modifier) {
+@Composable
+    fun CreateAccountScreen(modifier: Modifier = Modifier) {
+//    val viewModel: CreateAccountViewModel = hiltViewModel()
+    val navController = rememberNavController()
+    UserAuthenticationNavGraph(navController = navController)
+
         var email by remember { mutableStateOf("") }
         var password by remember { mutableStateOf("") }
         var firstName by remember {mutableStateOf("")}
         var lastName by remember { mutableStateOf("") }
         var confirmPassword by remember { mutableStateOf("") }
+
+    val isDataValidated by remember {
+        derivedStateOf {
+            email != "" && firstName != "" && lastName != "" && password != "" && confirmPassword != "" && phoneNumber != ""
+        }
+    }
 
         //var showPassword by remember { mutableStateOf("false") }
 
@@ -79,32 +103,30 @@ class CreateAccountScreen {
 
             Spacer(modifier = Modifier.height(55.dp))
             // Observe the state
-            val createAccountState by viewModel.createAccountState.collectAsState()
+//            val createAccountState by viewModel.createAccountState.collectAsState()
 
-            // Handle navigation and error display
-            if (createAccountState.isLoading) {
-                CircularProgressIndicator()
-            } else {
-                if (createAccountState.success != null) {
-                    // Signup was successful, navigate to another screen
-                    viewModel.signup(SignUpRequest(email, firstName, lastName, password, phoneNumber))
-                    navController.navigate(Screens.LoginScreen.route)
-                } else if (createAccountState.error != null) {
-                    // Display error message
+//            // Handle navigation and error display
+//            if (createAccountState.isLoading) {
+//                CircularProgressIndicator()
+//            } else {
+//                if (createAccountState.success != null) {
+//                    // Signup was successful, navigate to another screen
+//                    navController.navigate(Screens.LoginScreen.route)
+//                } else if (createAccountState.error != null) {
+//                    // Display error message
 //                    Text(text = createAccountState.error!!, color = Color.Red)
-                    Text(text = "Try again later")
-
-                }
-            }
+//                }
+//            }
             Button(onClick = {
-                viewModel.signup(SignUpRequest(email, firstName, lastName, password, phoneNumber))
+//                             viewModel.signup(SignUpRequest(email,firstName,lastName,password,phoneNumber))
                 navController.navigate(Screens.LoginScreen.route)
 
             },
                 shape = RoundedCornerShape(5.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = Primary),
                 modifier = Modifier
-                    .fillMaxWidth()) {
+                    .fillMaxWidth(),
+                enabled = isDataValidated) {
                 Text(text = "Continue", color = Neutral1)
 
             }
