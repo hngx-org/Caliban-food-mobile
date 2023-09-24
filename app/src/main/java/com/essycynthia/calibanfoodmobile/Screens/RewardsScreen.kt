@@ -42,61 +42,62 @@ import com.essycynthia.calibanfoodmobile.dummyData.ColleagueData
 import com.essycynthia.calibanfoodmobile.dummyData.RewardHistory
 import com.essycynthia.calibanfoodmobile.dummyData.colleaguesList
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun ReceivedRewardHistoryScreen(){
-    Column {
-        TopAppBar(
-            title = {Text(text = "Rewards History")},
-            modifier = Modifier.background(Color.White),
-        )
-        
-        ReceivedRewardHistory(rewardHistories = colleaguesList)
-    }
-}
+ @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    fun RewardsScreen() {
+        Column {
+            TopAppBar(
+                title = { Text(text = "Rewards History") },
+                modifier = Modifier.background(Color.White),
+            )
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun ReceivedRewardHistory(
-    rewardHistories: List<RewardHistory>
-){
-    Surface(
-        color = Color(0xFFFAFAFA)
+            ReceivedRewardHistory(rewardHistories = colleaguesList)
+        }
+    }
+
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    fun ReceivedRewardHistory(
+        rewardHistories: List<RewardHistory>
     ) {
-        Column() {
-            NavigationButtons()
-            LazyColumn(
-                verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterVertically)
-                ){
-                rewardHistories.forEach {
-                    item {
-                        ReceivedUserDay(it.day)
-                    }
-                    items(it.colleagueDataList){colleagueData ->
-                        ReceivedUserRow(colleagueData)
+        Surface(
+            color = Color(0xFFFAFAFA)
+        ) {
+            Column() {
+                NavigationButtons()
+                LazyColumn(
+                    verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterVertically)
+                ) {
+                    rewardHistories.forEach {
+                        item {
+                            ReceivedUserDay(it.day)
+                        }
+                        items(it.colleagueDataList) { colleagueData ->
+                            ReceivedUserRow(colleagueData)
+                        }
                     }
                 }
             }
         }
     }
-}
 
-@Composable
-fun ReceivedUserDay(day: String){
-    Text(
-        text = day,
-        style = TextStyle(
-            fontSize = 13.sp,
-            fontFamily = FontFamily(Font(R.font.roboto)),
-            fontWeight = FontWeight(500),
-            color = Color(0xFF333333),
-            letterSpacing = 0.03.sp,
-        ),
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
-    )
-}
+    @Composable
+    fun ReceivedUserDay(day: String) {
+        Text(
+            text = day,
+            style = TextStyle(
+                fontSize = 13.sp,
+                fontFamily = FontFamily(Font(R.font.roboto)),
+                fontWeight = FontWeight(500),
+                color = Color(0xFF333333),
+                letterSpacing = 0.03.sp,
+            ),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
+        )
+    }
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 //Composable for a specific row element

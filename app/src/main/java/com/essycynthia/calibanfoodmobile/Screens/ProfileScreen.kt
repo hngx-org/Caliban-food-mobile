@@ -1,4 +1,4 @@
-package com.essycynthia.calibanfoodmobile.profilescreen
+package com.essycynthia.calibanfoodmobile.Screens
 
 
 import android.annotation.SuppressLint
@@ -50,329 +50,329 @@ import androidx.compose.ui.unit.sp
 
 import com.essycynthia.calibanfoodmobile.R
 
+    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    fun ProfileScreen() {
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@OptIn(ExperimentalMaterial3Api::class)
+        var title by remember { mutableStateOf("Profile") }
+        val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
 
-
-@Composable
-fun ProfilePage() {
-
-
-    var title by remember { mutableStateOf("Profile") }
-    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
-
-
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    // H3 (Semi Bold)
-                    Text(
-                        text = title,
-                        fontSize = 16.sp,
-
-                        fontFamily = FontFamily(Font(R.font.poppinsemibold)),
-                        fontWeight = FontWeight(600),
-                        color = Color(0xFF333333),
-                        letterSpacing = 0.02.sp
-                    )
-                }, colors = TopAppBarDefaults.smallTopAppBarColors(
-                    containerColor = Color.White,
-                    titleContentColor = Color(0xFF333333)
-                ), scrollBehavior = scrollBehavior
-            )
-        }
-
-    ) {
-        LazyColumn(
-            modifier = Modifier
-                // .background(Color.Green)
-                .fillMaxSize()
-                .padding(top = 60.dp, start = 20.dp, end = 20.dp)
-        ) {
-            item {
-
-                Image(
-                    painter = painterResource(id = R.drawable.profileimage),
-                    contentDescription = "profile image",
-                    modifier = Modifier
-                        .width(343.dp)
-                        .height(270.dp),
-
-                    )
-
-
-            }
-
-            item {
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(top = 20.dp)
-                ) {
-                    // Small Body (Medium)
-
-                    Text(
-                        text = "Gbemisola Owolabi",
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight(600),
-                        fontFamily = FontFamily(Font(R.font.robotomedium)),
-                        color = Color(0xFF333333),
-                        letterSpacing = 0.03.sp
-                    )
-
-                    // Small Body (Regular)
-                    Text(
-                        text = "@gbemiglad",
-                        modifier = Modifier
-                            .padding(top = 10.dp),
-                        fontSize = 12.sp,
-                        lineHeight = 18.sp,
-                        fontFamily = FontFamily(Font(R.font.robotoregular)),
-                        fontWeight = FontWeight(400),
-                        color = Color(0xFF333333),
-                        letterSpacing = 0.03.sp
-                    )
-
-                    Row(
-                        modifier = Modifier.padding(top = 10.dp)
-
-
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.role),
-                            contentDescription = "role",
-                            modifier = Modifier
-                                .size(14.dp)
-                        )
-
-                        Spacer(modifier = Modifier.width(6.dp))
-
-                        Text(
-                            text = "Product Designer",
-                            // Small Body (Regular)
-                            fontSize = 12.sp,
-                            lineHeight = 18.sp,
-                            fontFamily = FontFamily(Font(R.font.robotoregular)),
-                            fontWeight = FontWeight(400),
-                            color = Color(0xFF333333),
-                            letterSpacing = 0.03.sp,
-                        )
-                    }
-
-                    Row(
-                        modifier = Modifier.padding(top = 10.dp)
-
-
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.membership),
-                            contentDescription = "membership",
-                            modifier = Modifier
-                                .size(14.dp)
-                        )
-
-                        Spacer(modifier = Modifier.width(6.dp))
-
-                        Text(
-                            text = "Member of HNG Team",
-                            // Small Body (Regular)
-                            fontSize = 12.sp,
-                            lineHeight = 18.sp,
-                            fontFamily = FontFamily(Font(R.font.robotoregular)),
-                            fontWeight = FontWeight(400),
-                            color = Color(0xFF333333),
-                            letterSpacing = 0.03.sp,
-                        )
-                    }
-
-
-
-
-
-                    Row(
-                        modifier = Modifier.padding(top = 10.dp)
-
-
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.location),
-                            contentDescription = "location",
-                            modifier = Modifier
-                                .size(14.dp)
-                        )
-
-                        Spacer(modifier = Modifier.width(6.dp))
-
-                        Text(
-                            text = "Lagos, Nigeria",
-                            // Small Body (Regular)
-                            fontSize = 12.sp,
-                            lineHeight = 18.sp,
-                            fontFamily = FontFamily(Font(R.font.robotoregular)),
-                            fontWeight = FontWeight(400),
-                            color = Color(0xFF333333),
-                            letterSpacing = 0.03.sp,
-                        )
-                    }
-
-                    Column(
-                        modifier = Modifier.padding(top = 20.dp),
-                        //verticalArrangement = Arrangement.spacedBy(30.dp)
-
-
-                    ) {
-
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = {
                         // H3 (Semi Bold)
                         Text(
-                            text = "Overview",
+                            text = title,
                             fontSize = 16.sp,
+
                             fontFamily = FontFamily(Font(R.font.poppinsemibold)),
                             fontWeight = FontWeight(600),
                             color = Color(0xFF333333),
-                            letterSpacing = 0.02.sp,
+                            letterSpacing = 0.02.sp
                         )
-
-                    }
-
-                    //card composable for lunch received and given
-
-                    Row(modifier = Modifier.padding(top = 20.dp))
-                    {
-                        Card(
-                            elevation = CardDefaults.cardElevation(defaultElevation = 15.dp),
-                            modifier = Modifier
-                                .weight(1F)
-                                .width(165.dp)
-                                .height(120.dp),
-                            colors = CardDefaults.cardColors(
-                                containerColor = Color(0xFF3F61DB)
-                            ),
-                            shape = RoundedCornerShape(size = (5.dp))
-                            // .weight(1F)
-
-                        ) {
-                            Column(
-                                modifier = Modifier
-                                    .offset(x = 18.dp, y = 9.5.dp)
-                                    .width(130.dp)
-                                    .height(101.dp),
-                                verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.Top),
-                                horizontalAlignment = Alignment.CenterHorizontally
-
-
-                            ) {
-                                Image(
-                                    painter = painterResource(id = R.drawable.rewardrecieved),
-                                    contentDescription = "reward received",
-                                    modifier = Modifier
-                                        .size(20.dp)
-                                )
-
-                                Text(
-                                    text = "Free Lunch Received",
-                                    modifier = Modifier.padding(top = 6.dp),
-
-                                    // Small Body (Medium)
-
-                                    fontSize = 13.sp,
-                                    fontFamily = FontFamily(Font(R.font.robotomedium)),
-                                    fontWeight = FontWeight(500),
-                                    color = Color(0xFFFFFFFF),
-                                    textAlign = TextAlign.Center,
-                                    letterSpacing = 0.03.sp,
-                                )
-                                Text(
-                                    text = "14",
-
-                                    // H1 (Bold)
-
-                                    fontSize = 28.sp,
-                                    fontFamily = FontFamily(Font(R.font.poppinsbold)),
-                                    fontWeight = FontWeight(700),
-                                    color = Color(0xFFFFFFFF),
-                                    textAlign = TextAlign.Center,
-                                    letterSpacing = 0.07.sp,
-                                )
-
-
-                            }
-
-
-                        }
-
-
-                        Spacer(modifier = Modifier.width(5.dp))
-
-                        Card(
-                            elevation = CardDefaults.cardElevation(defaultElevation = 15.dp),
-                            modifier = Modifier
-                                .weight(1F)
-                                .width(165.dp)
-                                .height(120.dp),
-                            colors = CardDefaults.cardColors(
-                                containerColor = Color(0xFF5ECC62)
-                            ),
-                            shape = RoundedCornerShape(size = (5.dp))
-
-
-                        ) {
-                            Column(
-                                modifier = Modifier
-                                    .offset(x = 18.dp, y = 9.5.dp)
-                                    .width(130.dp)
-                                    .height(101.dp),
-                                verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.Top),
-                                horizontalAlignment = Alignment.CenterHorizontally
-
-
-                            ) {
-                                Image(
-                                    painter = painterResource(id = R.drawable.givenreward),
-                                    contentDescription = "reward received",
-                                    modifier = Modifier
-                                        .size(20.dp)
-                                )
-
-                                Text(
-                                    text = "Free Lunch Given",
-                                    modifier = Modifier.padding(top = 6.dp),
-
-                                    // Small Body (Medium)
-
-                                    fontSize = 13.sp,
-                                    fontFamily = FontFamily(Font(R.font.robotomedium)),
-                                    fontWeight = FontWeight(500),
-                                    color = Color(0xFFFFFFFF),
-                                    textAlign = TextAlign.Center,
-                                    letterSpacing = 0.03.sp,
-                                )
-                                Text(
-                                    text = "10",
-
-                                    // H1 (Bold)
-
-                                    fontSize = 28.sp,
-                                    fontFamily = FontFamily(Font(R.font.poppinsbold)),
-                                    fontWeight = FontWeight(700),
-                                    color = Color(0xFFFFFFFF),
-                                    textAlign = TextAlign.Center,
-                                    letterSpacing = 0.07.sp,
-                                )
-
-
-                            }
-
-                        }
-
-
-                    }
-                }
-
+                    }, colors = TopAppBarDefaults.smallTopAppBarColors(
+                        containerColor = Color.White,
+                        titleContentColor = Color(0xFF333333)
+                    ), scrollBehavior = scrollBehavior
+                )
             }
 
+        ) {
+            LazyColumn(
+                modifier = Modifier
+                    // .background(Color.Green)
+                    .fillMaxSize()
+                    .padding(top = 60.dp, start = 20.dp, end = 20.dp)
+            ) {
+                item {
 
+                    Image(
+                        painter = painterResource(id = R.drawable.profileimage),
+                        contentDescription = "profile image",
+                        modifier = Modifier
+                            .width(343.dp)
+                            .height(270.dp),
+
+                        )
+                }
+
+                item {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(top = 20.dp)
+                    ) {
+                        // Small Body (Medium)
+
+                        Text(
+                            text = "Gbemisola Owolabi",
+                            fontSize = 13.sp,
+                            fontWeight = FontWeight(600),
+                            fontFamily = FontFamily(Font(R.font.robotomedium)),
+                            color = Color(0xFF333333),
+                            letterSpacing = 0.03.sp
+                        )
+
+                        // Small Body (Regular)
+                        Text(
+                            text = "@gbemiglad",
+                            modifier = Modifier
+                                .padding(top = 10.dp),
+                            fontSize = 12.sp,
+                            lineHeight = 18.sp,
+                            fontFamily = FontFamily(Font(R.font.robotoregular)),
+                            fontWeight = FontWeight(400),
+                            color = Color(0xFF333333),
+                            letterSpacing = 0.03.sp
+                        )
+
+                        Row(
+                            modifier = Modifier.padding(top = 10.dp)
+
+
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.role),
+                                contentDescription = "role",
+                                modifier = Modifier
+                                    .size(14.dp)
+                            )
+
+                            Spacer(modifier = Modifier.width(6.dp))
+
+                            Text(
+                                text = "Product Designer",
+                                // Small Body (Regular)
+                                fontSize = 12.sp,
+                                lineHeight = 18.sp,
+                                fontFamily = FontFamily(Font(R.font.robotoregular)),
+                                fontWeight = FontWeight(400),
+                                color = Color(0xFF333333),
+                                letterSpacing = 0.03.sp,
+                            )
+                        }
+
+                        Row(
+                            modifier = Modifier.padding(top = 10.dp)
+
+
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.membership),
+                                contentDescription = "membership",
+                                modifier = Modifier
+                                    .size(14.dp)
+                            )
+
+                            Spacer(modifier = Modifier.width(6.dp))
+
+                            Text(
+                                text = "Member of HNG Team",
+                                // Small Body (Regular)
+                                fontSize = 12.sp,
+                                lineHeight = 18.sp,
+                                fontFamily = FontFamily(Font(R.font.robotoregular)),
+                                fontWeight = FontWeight(400),
+                                color = Color(0xFF333333),
+                                letterSpacing = 0.03.sp,
+                            )
+                        }
+
+
+
+
+
+                        Row(
+                            modifier = Modifier.padding(top = 10.dp)
+
+
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.location),
+                                contentDescription = "location",
+                                modifier = Modifier
+                                    .size(14.dp)
+                            )
+
+                            Spacer(modifier = Modifier.width(6.dp))
+
+                            Text(
+                                text = "Lagos, Nigeria",
+                                // Small Body (Regular)
+                                fontSize = 12.sp,
+                                lineHeight = 18.sp,
+                                fontFamily = FontFamily(Font(R.font.robotoregular)),
+                                fontWeight = FontWeight(400),
+                                color = Color(0xFF333333),
+                                letterSpacing = 0.03.sp,
+                            )
+                        }
+
+                        Column(
+                            modifier = Modifier.padding(top = 20.dp),
+                            //verticalArrangement = Arrangement.spacedBy(30.dp)
+
+
+                        ) {
+
+                            // H3 (Semi Bold)
+                            Text(
+                                text = "Overview",
+                                fontSize = 16.sp,
+                                fontFamily = FontFamily(Font(R.font.poppinsemibold)),
+                                fontWeight = FontWeight(600),
+                                color = Color(0xFF333333),
+                                letterSpacing = 0.02.sp,
+                            )
+
+                        }
+
+                        //card composable for lunch received and given
+
+                        Row(modifier = Modifier.padding(top = 20.dp))
+                        {
+                            Card(
+                                elevation = CardDefaults.cardElevation(defaultElevation = 15.dp),
+                                modifier = Modifier
+                                    .weight(1F)
+                                    .width(165.dp)
+                                    .height(120.dp),
+                                colors = CardDefaults.cardColors(
+                                    containerColor = Color(0xFF3F61DB)
+                                ),
+                                shape = RoundedCornerShape(size = (5.dp))
+                                // .weight(1F)
+
+                            ) {
+                                Column(
+                                    modifier = Modifier
+                                        .offset(x = 18.dp, y = 9.5.dp)
+                                        .width(130.dp)
+                                        .height(101.dp),
+                                    verticalArrangement = Arrangement.spacedBy(
+                                        10.dp,
+                                        Alignment.Top
+                                    ),
+                                    horizontalAlignment = Alignment.CenterHorizontally
+
+
+                                ) {
+                                    Image(
+                                        painter = painterResource(id = R.drawable.rewardrecieved),
+                                        contentDescription = "reward received",
+                                        modifier = Modifier
+                                            .size(20.dp)
+                                    )
+
+                                    Text(
+                                        text = "Free Lunch Received",
+                                        modifier = Modifier.padding(top = 6.dp),
+
+                                        // Small Body (Medium)
+
+                                        fontSize = 13.sp,
+                                        fontFamily = FontFamily(Font(R.font.robotomedium)),
+                                        fontWeight = FontWeight(500),
+                                        color = Color(0xFFFFFFFF),
+                                        textAlign = TextAlign.Center,
+                                        letterSpacing = 0.03.sp,
+                                    )
+                                    Text(
+                                        text = "14",
+
+                                        // H1 (Bold)
+
+                                        fontSize = 28.sp,
+                                        fontFamily = FontFamily(Font(R.font.poppinsbold)),
+                                        fontWeight = FontWeight(700),
+                                        color = Color(0xFFFFFFFF),
+                                        textAlign = TextAlign.Center,
+                                        letterSpacing = 0.07.sp,
+                                    )
+
+
+                                }
+
+
+                            }
+
+
+                            Spacer(modifier = Modifier.width(5.dp))
+
+                            Card(
+                                elevation = CardDefaults.cardElevation(defaultElevation = 15.dp),
+                                modifier = Modifier
+                                    .weight(1F)
+                                    .width(165.dp)
+                                    .height(120.dp),
+                                colors = CardDefaults.cardColors(
+                                    containerColor = Color(0xFF5ECC62)
+                                ),
+                                shape = RoundedCornerShape(size = (5.dp))
+
+
+                            ) {
+                                Column(
+                                    modifier = Modifier
+                                        .offset(x = 18.dp, y = 9.5.dp)
+                                        .width(130.dp)
+                                        .height(101.dp),
+                                    verticalArrangement = Arrangement.spacedBy(
+                                        10.dp,
+                                        Alignment.Top
+                                    ),
+                                    horizontalAlignment = Alignment.CenterHorizontally
+
+
+                                ) {
+                                    Image(
+                                        painter = painterResource(id = R.drawable.givenreward),
+                                        contentDescription = "reward received",
+                                        modifier = Modifier
+                                            .size(20.dp)
+                                    )
+
+                                    Text(
+                                        text = "Free Lunch Given",
+                                        modifier = Modifier.padding(top = 6.dp),
+
+                                        // Small Body (Medium)
+
+                                        fontSize = 13.sp,
+                                        fontFamily = FontFamily(Font(R.font.robotomedium)),
+                                        fontWeight = FontWeight(500),
+                                        color = Color(0xFFFFFFFF),
+                                        textAlign = TextAlign.Center,
+                                        letterSpacing = 0.03.sp,
+                                    )
+                                    Text(
+                                        text = "10",
+
+                                        // H1 (Bold)
+
+                                        fontSize = 28.sp,
+                                        fontFamily = FontFamily(Font(R.font.poppinsbold)),
+                                        fontWeight = FontWeight(700),
+                                        color = Color(0xFFFFFFFF),
+                                        textAlign = TextAlign.Center,
+                                        letterSpacing = 0.07.sp,
+                                    )
+
+
+                                }
+
+                            }
+
+
+                        }
+                    }
+
+                }
+
+
+            }
         }
     }
-}
+

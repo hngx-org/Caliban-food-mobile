@@ -28,10 +28,9 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-class CreateAccountScreen {
 
     @Composable
-    fun register(modifier: Modifier = Modifier) {
+    fun Register(modifier: Modifier = Modifier) {
         var email by remember { mutableStateOf("") }
         var password by remember { mutableStateOf("") }
         var firstName by remember {mutableStateOf("")}
@@ -215,4 +214,3 @@ class CreateAccountScreen {
         )
 
     }
-}
