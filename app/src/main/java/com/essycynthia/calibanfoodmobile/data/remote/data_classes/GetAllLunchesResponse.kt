@@ -7,3 +7,5 @@ data class GetAllLunchesResponse(
     val message: String,
     val statusCode: Int
 )
+
+
