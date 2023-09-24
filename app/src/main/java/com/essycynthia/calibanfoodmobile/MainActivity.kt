@@ -24,14 +24,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.essycynthia.calibanfoodmobile.colleaguescreen.StaffProfileScreen
 import com.essycynthia.calibanfoodmobile.dummyData.RewardHistory
+import com.essycynthia.calibanfoodmobile.inviteuser.InviteUserOrg
 import com.essycynthia.calibanfoodmobile.organizationfreelunch.CardData
-import com.essycynthia.calibanfoodmobile.searchcolleague.LunchRecognitionsScreen
+import com.essycynthia.calibanfoodmobile.organizationfreelunch.OrganizationFreeLunchReward
 import com.essycynthia.calibanfoodmobile.ui.BottomScreens
-
+import com.essycynthia.calibanfoodmobile.ui.profile_screen.ProfilePage
+import com.essycynthia.calibanfoodmobile.ui.reward_screen.SendLunchRewardScreen
 
 
 import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
+import com.essycynthia.calibanfoodmobile.ui.withdrawal_screen.WithdrawPage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -47,17 +53,21 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    LunchRecognitionsScreen()
+
+
                  //   Greeting()
-                  //ProfilePage()
-               //   OrganizationFreeLunchReward(cards = sampleCardData() )
-                   // WithdrawPage()
-                    //InviteUserOrg()
-                 //StaffProfileScreen()
+                //  ProfilePage()
+               //OrganizationFreeLunchReward(cards = sampleCardData() )
+                    //WithdrawPage()
+                  //  InviteUserOrg()
+                   // StaffProfileScreen(navController = rememberNavController())
+
                 }
             }
         }
     }
+
+
 }
 @Composable
 fun Greeting(){
