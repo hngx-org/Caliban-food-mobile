@@ -43,7 +43,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+//import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
 import com.essycynthia.calibanfoodmobile.dummyData.RewardHistory
 import com.essycynthia.calibanfoodmobile.ui.navigation.user_authenticated_nav.UserAuthenticatedNavigation
@@ -67,7 +67,7 @@ class MainActivity : ComponentActivity() {
                 ) {
 
                     actionBar?.hide()
-                    installSplashScreen()
+                    //installSplashScreen()
 //                    Navigation()
                     UserAuthenticatedNavigation()
 //                    HomeScreen()
