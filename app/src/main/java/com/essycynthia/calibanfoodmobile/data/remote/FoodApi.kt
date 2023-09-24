@@ -20,6 +20,7 @@ import com.essycynthia.calibanfoodmobile.data.remote.data_classes.UsersResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.WithdrawalRequest
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.WithdrawalResponse
 import com.essycynthia.calibanfoodmobile.data.remote.dto.CreateOrganizationRequest
+import com.essycynthia.calibanfoodmobile.data.remote.dto.SignUpResponseDto
 import com.essycynthia.calibanfoodmobile.data.remote.dto.StaffSignUpRequest
 import retrofit2.http.Body
 import retrofit2.http.Field
@@ -36,7 +37,7 @@ interface FoodApi {
     suspend fun login(@Body request: LoginRequest): LoginResponse
 
     @POST("api/auth/user/signup")
-    suspend fun signup(@Body request: SignUpRequest)
+    suspend fun signup(@Body request: SignUpRequest) : SignUpResponseDto
 
     @Headers("Authorization: Bearer <access_token>") // Replace <access_token> with the actual access token
     @PUT("api/organization/create")
