@@ -1,16 +1,13 @@
-package com.essycynthia.calibanfoodmobile.profilescreen
+package com.essycynthia.calibanfoodmobile.ui.profile_screen
 
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -19,7 +16,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -38,29 +35,35 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
 import com.essycynthia.calibanfoodmobile.R
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
-
-
+@Preview
 @Composable
 fun ProfilePage() {
-
-
+    var image by remember {
+        mutableStateOf(R.drawable.profileimage)
+    }
+    var name by remember { mutableStateOf("Gbemisola Owolabi") }
+    var userName by remember { mutableStateOf("@gbemiglad") }
+    var role by remember { mutableStateOf("Product Designer") }
+    var membership by remember { mutableStateOf("Member of HNG Team") }
+    var location by remember { mutableStateOf("Lagos, Nigeria") }
+    var lunchRecieved by remember { mutableStateOf("14") }
+    var lunchGiven by remember { mutableStateOf("10") }
     var title by remember { mutableStateOf("Profile") }
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
+
 
 
     Scaffold(
@@ -77,10 +80,26 @@ fun ProfilePage() {
                         color = Color(0xFF333333),
                         letterSpacing = 0.02.sp
                     )
-                }, colors = TopAppBarDefaults.smallTopAppBarColors(
+                },
+                actions = {
+                    IconButton(onClick = { }) {
+                        Icon(
+                            imageVector = Icons.Default.ExitToApp,
+                            contentDescription = "Logout"
+                        )
+
+
+                    }
+                },
+
+                colors = TopAppBarDefaults.smallTopAppBarColors(
                     containerColor = Color.White,
                     titleContentColor = Color(0xFF333333)
-                ), scrollBehavior = scrollBehavior
+                ),
+
+
+
+                scrollBehavior = scrollBehavior
             )
         }
 
@@ -94,7 +113,7 @@ fun ProfilePage() {
             item {
 
                 Image(
-                    painter = painterResource(id = R.drawable.profileimage),
+                    painter = painterResource(image),
                     contentDescription = "profile image",
                     modifier = Modifier
                         .width(343.dp)
@@ -114,7 +133,7 @@ fun ProfilePage() {
                     // Small Body (Medium)
 
                     Text(
-                        text = "Gbemisola Owolabi",
+                        text = name,
                         fontSize = 13.sp,
                         fontWeight = FontWeight(600),
                         fontFamily = FontFamily(Font(R.font.robotomedium)),
@@ -124,7 +143,7 @@ fun ProfilePage() {
 
                     // Small Body (Regular)
                     Text(
-                        text = "@gbemiglad",
+                        text = userName,
                         modifier = Modifier
                             .padding(top = 10.dp),
                         fontSize = 12.sp,
@@ -150,7 +169,7 @@ fun ProfilePage() {
                         Spacer(modifier = Modifier.width(6.dp))
 
                         Text(
-                            text = "Product Designer",
+                            text = role,
                             // Small Body (Regular)
                             fontSize = 12.sp,
                             lineHeight = 18.sp,
@@ -176,7 +195,7 @@ fun ProfilePage() {
                         Spacer(modifier = Modifier.width(6.dp))
 
                         Text(
-                            text = "Member of HNG Team",
+                            text = membership,
                             // Small Body (Regular)
                             fontSize = 12.sp,
                             lineHeight = 18.sp,
@@ -206,7 +225,7 @@ fun ProfilePage() {
                         Spacer(modifier = Modifier.width(6.dp))
 
                         Text(
-                            text = "Lagos, Nigeria",
+                            text = location,
                             // Small Body (Regular)
                             fontSize = 12.sp,
                             lineHeight = 18.sp,
@@ -284,7 +303,7 @@ fun ProfilePage() {
                                     letterSpacing = 0.03.sp,
                                 )
                                 Text(
-                                    text = "14",
+                                    text = lunchRecieved,
 
                                     // H1 (Bold)
 
@@ -349,7 +368,7 @@ fun ProfilePage() {
                                     letterSpacing = 0.03.sp,
                                 )
                                 Text(
-                                    text = "10",
+                                    text = lunchGiven,
 
                                     // H1 (Bold)
 
