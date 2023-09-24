@@ -52,10 +52,6 @@ class SignUpStaff : ComponentActivity() {
 
                 }*/
 
-                //Register()
-
-               // @Composable
-                //fun Register(modifier: Modifier = Modifier) {
                     var email by remember { mutableStateOf("") }
                     var password by remember { mutableStateOf("") }
                     var firstName by remember { mutableStateOf("") }
