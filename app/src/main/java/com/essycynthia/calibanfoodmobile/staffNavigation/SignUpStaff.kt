@@ -68,7 +68,7 @@ class SignUpStaff : ComponentActivity() {
 
                     Column(modifier = Modifier
                         .padding(20.dp)
-                        .padding(top = 50.dp)
+                        .padding(top = 10.dp)
                         .fillMaxWidth()) {
                         Text(
                             text = "Create Account",
@@ -83,7 +83,7 @@ class SignUpStaff : ComponentActivity() {
                             fontSize = 14.sp,
                             modifier = Modifier.padding(top = 8.dp)
                         )
-                        Spacer(modifier = Modifier.height(55.dp))
+                        Spacer(modifier = Modifier.height(30.dp))
 
                         CreateAccountFields(
                             modifier = Modifier.fillMaxWidth(),
@@ -102,7 +102,7 @@ class SignUpStaff : ComponentActivity() {
                             }
                         )
 
-                        Spacer(modifier = Modifier.height(55.dp))
+                        Spacer(modifier = Modifier.height(20.dp))
                         Button(onClick = {
                             Intent(this@SignUpStaff, LoginActivity::class.java).also {
                                 startActivity(it)
@@ -192,30 +192,6 @@ fun CreateAccountFields(modifier: Modifier = Modifier.fillMaxWidth(), email: Str
     )
     Spacer(modifier = Modifier.height(15.dp))
 
-    DetailsFields(modifier = modifier.fillMaxWidth(),
-        value = confirmPassword,
-        label = "Confirm Password",
-        placeholder = "Confirm Password",
-        onValueChaged = onConfirmPasswordChanged,
-        trailingIcon = {
-            if(showPassword) {
-                IconButton(onClick = { showPassword = false}) {
-                    Icon(
-
-                        imageVector = Icons.Filled.Visibility,
-                        contentDescription = "hide_password"
-                    )
-                }
-            } else {
-                IconButton(onClick = { showPassword = true }) {
-                    Icon(
-                        imageVector = Icons.Filled.VisibilityOff,
-                        contentDescription = "hide_password"
-                    )
-                }
-            }
-        }
-    )
     /* DetailsFields(value = confirmPassword,
          label = "Password",
          placeholder = "Confirm Password",

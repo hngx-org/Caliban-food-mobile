@@ -38,8 +38,8 @@ class LoginActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            var noToken = false
             CalibanFoodMobileTheme {
-
 
                     var loginEmail by remember {
                         mutableStateOf("")
@@ -48,8 +48,6 @@ class LoginActivity : ComponentActivity() {
                     var loginPassword by remember {
                         mutableStateOf("")
                     }
-
-
 
                     Column(modifier = Modifier
                         .padding(20.dp)
