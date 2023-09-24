@@ -33,22 +33,29 @@ class FreeLunchRepository @Inject constructor(
         }
     }
 
-    suspend fun signup(signUpRequest: SignUpRequest): Resource<SignUpResponse> {
-        return try {
-            val response = api.signup(signUpRequest)
-            Resource.Success(response)
+    suspend fun signup(signUpRequest: SignUpRequest) {
+         try {
+             api.signup(signUpRequest)
         } catch (e: Exception) {
             Resource.Error("An error occurred during signup", null)
-        }
+             throw e
+         }
 
     }
 
-    suspend fun createOrganization(createOrganizationRequest: CreateOrganizationRequest): Resource<SignUpResponse> {
-        return try {
-            val response = api.createOrganization(createOrganizationRequest)
-            Resource.Success(response)
+    suspend fun createOrganization(
+        accessToken: String,
+        request: CreateOrganizationRequest
+    ) {
+        // Set up the headers with the access token
+        val headers = mapOf("Authorization" to "Bearer $accessToken")
+
+        try {
+            // Make the API request
+            api.createOrganization(headers, request)
         } catch (e: Exception) {
-            Resource.Error("An error occurred while creating an organization", null)
+            Resource.Error("An error occurred during staff signup", null)
+            throw e
         }
     }
 

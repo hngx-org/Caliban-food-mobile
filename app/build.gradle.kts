@@ -105,6 +105,10 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:2.46.1")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
+    //LiveData
+    implementation ("androidx.compose.runtime:runtime-livedata:1.6.0-alpha06")
+
+
 
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
