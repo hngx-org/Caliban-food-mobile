@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -386,7 +385,7 @@ fun SendLunchReward(modifier: Modifier = Modifier) {
 
 @Composable
 fun RewardHistoryList(
-    rewardHistories: List<RewardHistory>,
+    rewardHistories: List<com.essycynthia.calibanfoodmobile.dummyData.RewardHistory>,
     modifier: Modifier = Modifier
 ) {
     Row {

@@ -17,13 +17,13 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
-import com.essycynthia.calibanfoodmobile.FreeLunchDashBoard
-import com.essycynthia.calibanfoodmobile.RewardHistoryList
-import com.essycynthia.calibanfoodmobile.SendLunchReward
+
 import com.essycynthia.calibanfoodmobile.dummyData.colleaguesList
+import com.essycynthia.calibanfoodmobile.homeuiscreen.FreeLunchDashBoard
+import com.essycynthia.calibanfoodmobile.homeuiscreen.RewardHistoryList
+import com.essycynthia.calibanfoodmobile.homeuiscreen.SendLunchReward
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -76,7 +76,7 @@ fun HomeScreen() {
         content = {
             Column {
                 Spacer(modifier = Modifier.height(40.dp)) // Add spacing between content
-                FreeLunchDashBoard(freeLunchAmount = 10, navController = navController)
+                FreeLunchDashBoard(freeLunchAmount = 10)
                 Spacer(modifier = Modifier.height(16.dp)) // Add spacing between content
                 SendLunchReward()
                 Spacer(modifier = Modifier.height(16.dp)) // Add spacing between content

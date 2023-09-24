@@ -25,6 +25,8 @@ import androidx.compose.ui.unit.sp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
 import com.essycynthia.calibanfoodmobile.dummyData.RewardHistory
+import com.essycynthia.calibanfoodmobile.organizationfreelunch.CardData
+import com.essycynthia.calibanfoodmobile.searchcolleague.LunchRecognitionsScreen
 import com.essycynthia.calibanfoodmobile.ui.BottomScreens
 
 
@@ -45,6 +47,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    LunchRecognitionsScreen()
                  //   Greeting()
                   //ProfilePage()
                //   OrganizationFreeLunchReward(cards = sampleCardData() )
