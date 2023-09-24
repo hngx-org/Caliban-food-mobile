@@ -1,10 +1,15 @@
 package com.essycynthia.calibanfoodmobile.ui
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.BottomAppBarDefaults.containerColor
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,8 +33,15 @@ fun Navigation() {
         BottomScreens.WithdrawalScreen,
         BottomScreens.RewardScreen
     )
-    androidx.compose.material.Scaffold(bottomBar = {
-        BottomNavigation(modifier = Modifier.padding(16.dp)) {
+    androidx.compose.material.Scaffold(
+        bottomBar = {
+
+        BottomNavigation(
+            backgroundColor = Color.White,
+
+
+
+            ) {
             val navBackStackEntry by navController.currentBackStackEntryAsState()
             val currentRoute = navBackStackEntry?.destination?.route
             screens.forEach {
@@ -57,7 +69,7 @@ fun Navigation() {
                         Icon(
                             imageVector = it.icon,
                             contentDescription = null,
-                            tint = if (currentRoute == it.route) Color.Red else Color.LightGray
+                            tint = if (currentRoute == it.route) Color(0xFFFF9405) else Color.LightGray
                         )
                     })
 

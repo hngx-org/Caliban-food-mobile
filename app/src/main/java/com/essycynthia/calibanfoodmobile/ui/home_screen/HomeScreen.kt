@@ -1,6 +1,8 @@
 package com.essycynthia.calibanfoodmobile.ui.home_screen
 
 import android.annotation.SuppressLint
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,6 +27,7 @@ import com.essycynthia.calibanfoodmobile.homeuiscreen.FreeLunchDashBoard
 import com.essycynthia.calibanfoodmobile.homeuiscreen.RewardHistoryList
 import com.essycynthia.calibanfoodmobile.homeuiscreen.SendLunchReward
 
+@RequiresApi(Build.VERSION_CODES.Q)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
