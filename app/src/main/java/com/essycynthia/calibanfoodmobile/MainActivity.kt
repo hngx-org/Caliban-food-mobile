@@ -166,7 +166,7 @@ fun FreeLunchDashBoard(
           //  Spacer(modifier = Modifier.height(12.dp))
 
             Text(
-                text = "10",
+                text = "$freeLunchAmount",
 
                 // H1 (Bold)
                 style = TextStyle(
