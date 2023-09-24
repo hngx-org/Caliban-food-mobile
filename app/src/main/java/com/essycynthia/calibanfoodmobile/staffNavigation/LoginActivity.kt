@@ -28,7 +28,10 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.essycynthia.calibanfoodmobile.R
+import com.essycynthia.calibanfoodmobile.data.remote.data_classes.LoginRequest
+import com.essycynthia.calibanfoodmobile.ui.login_screen.LoginViewModel
 import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
 import com.essycynthia.calibanfoodmobile.ui.theme.Grey
 import com.essycynthia.calibanfoodmobile.ui.theme.Neutral2
@@ -40,6 +43,7 @@ class LoginActivity : ComponentActivity() {
         setContent {
             CalibanFoodMobileTheme {
 
+                val viewModel: LoginViewModel = hiltViewModel()
 
                     var loginEmail by remember {
                         mutableStateOf("")
@@ -72,7 +76,9 @@ class LoginActivity : ComponentActivity() {
 
 
                         OutlinedButton(
-                            onClick = {  Intent(this@LoginActivity, MainActivity::class.java).also {
+                            onClick = {
+                                viewModel.login(LoginRequest(loginEmail, loginPassword))
+                                Intent(this@LoginActivity, MainActivity::class.java).also {
                                 startActivity(it)
                             } },
                             shape = RoundedCornerShape(5.dp),
