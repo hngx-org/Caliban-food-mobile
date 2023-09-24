@@ -49,6 +49,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
 import com.essycynthia.calibanfoodmobile.dummyData.RewardHistory
+import com.essycynthia.calibanfoodmobile.ui.login_screen.LoginScreen
 import com.essycynthia.calibanfoodmobile.ui.navigation.user_authenticated_nav.UserAuthenticatedNavigation
 import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -72,7 +73,8 @@ class MainActivity : ComponentActivity() {
                     actionBar?.hide()
                     installSplashScreen()
 //                    Navigation()
-                    UserAuthenticatedNavigation()
+//                    UserAuthenticatedNavigation()
+                    LoginScreen()
 //                    HomeScreen()
 
 
