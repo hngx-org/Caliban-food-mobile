@@ -14,14 +14,50 @@
         android:theme="@style/Theme.CalibanFoodMobile"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".staffNavigation.LoginActivity"
+            android:exported="false"
+            android:label="@string/title_activity_login"
+            android:theme="@style/Theme.CalibanFoodMobile" />
+        <activity
+            android:name=".staffNavigation.SignUpStaff"
+            android:exported="false"
+            android:label="@string/title_activity_sign_up_staff"
+            android:theme="@style/Theme.CalibanFoodMobile" />
+        <activity
+            android:name=".staffNavigation.SignUpAdmin"
+            android:exported="false"
+            android:label="@string/title_activity_sign_up_admin"
+            android:theme="@style/Theme.CalibanFoodMobile" />
+        <activity
+            android:name=".staffNavigation.EntryActivity"
+            android:exported="true"
+            android:label="@string/title_activity_entry"
+            android:theme="@style/Theme.CalibanFoodMobile">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--
+        <activity
+            android:name=".EntryActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        -->
+        <activity
+            android:name=".staffNavigation.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.splashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
         </activity>
     </application>

@@ -1,8 +1,5 @@
-package com.essycynthia.calibanfoodmobile.ui.create_account_screen
+package com.essycynthia.calibanfoodmobile.ui.theme
 
-import CreateAccountViewModel
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,7 +12,6 @@ import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -23,41 +19,23 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
-import com.essycynthia.calibanfoodmobile.data.remote.data_classes.SignUpRequest
-import com.essycynthia.calibanfoodmobile.ui.Screens
-import com.essycynthia.calibanfoodmobile.ui.login_screen.LoginScreen
-import com.essycynthia.calibanfoodmobile.ui.navigation.user_authenticated_nav.UserAuthenticationNavGraph
-import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
-import com.essycynthia.calibanfoodmobile.ui.theme.Grey
-import com.essycynthia.calibanfoodmobile.ui.theme.Neutral1
-import com.essycynthia.calibanfoodmobile.ui.theme.Neutral2
-import com.essycynthia.calibanfoodmobile.ui.theme.Primary
 
+class CreateAccountScreen {
 
-@RequiresApi(Build.VERSION_CODES.Q)
-@Composable
-    fun CreateAccountScreen(modifier: Modifier = Modifier,navController: NavController) {
-    val viewModel: CreateAccountViewModel = hiltViewModel()
-//    val navController = rememberNavController()
-
+    @Composable
+    fun register(modifier: Modifier = Modifier) {
         var email by remember { mutableStateOf("") }
         var password by remember { mutableStateOf("") }
         var firstName by remember {mutableStateOf("")}
         var lastName by remember { mutableStateOf("") }
-        var phoneNumber by remember { mutableStateOf("") }
         var confirmPassword by remember { mutableStateOf("") }
 
         //var showPassword by remember { mutableStateOf("false") }
@@ -89,13 +67,14 @@ import com.essycynthia.calibanfoodmobile.ui.theme.Primary
                 lastName = lastName,
                 password = password,
                 confirmPassword = confirmPassword,
-                phoneNumber = phoneNumber, // Pass phone number
-                onEmailChange = { email = it },
-                onFirstNameChanged = { firstName = it },
-                onLastNameChanged = { lastName = it },
-                onPasswordChange = { password = it },
-                onConfirmPasswordChanged = { confirmPassword = it },
-                onPhoneNumberChanged = { phoneNumber = it } // Handle phone number change
+                onEmailChange = {email = it
+                },
+                onFirstNameChanged = { firstName= it },
+                onLastNameChanged = {lastName = it },
+                onPasswordChange = {password = it
+                },
+                onConfirmPasswordChanged = {confirmPassword = it
+                }
             )
 
             Spacer(modifier = Modifier.height(55.dp))
@@ -197,9 +176,10 @@ import com.essycynthia.calibanfoodmobile.ui.theme.Primary
             placeholder = "Enter Password",
             onValueChaged = onPasswordChange,
             trailingIcon = {
-                if (showPassword) {
-                    IconButton(onClick = { showPassword = false }) {
+                if(showPassword) {
+                    IconButton(onClick = { showPassword = false}) {
                         Icon(
+
                             imageVector = Icons.Filled.Visibility,
                             contentDescription = "hide_password"
                         )
@@ -214,19 +194,18 @@ import com.essycynthia.calibanfoodmobile.ui.theme.Primary
                 }
             }
         )
-
         Spacer(modifier = Modifier.height(15.dp))
 
-        DetailsFields(
-            modifier = modifier.fillMaxWidth(),
+        DetailsFields(modifier = modifier.fillMaxWidth(),
             value = confirmPassword,
             label = "Confirm Password",
             placeholder = "Confirm Password",
             onValueChaged = onConfirmPasswordChanged,
             trailingIcon = {
-                if (showPassword) {
-                    IconButton(onClick = { showPassword = false }) {
+                if(showPassword) {
+                    IconButton(onClick = { showPassword = false}) {
                         Icon(
+
                             imageVector = Icons.Filled.Visibility,
                             contentDescription = "hide_password"
                         )
@@ -241,8 +220,11 @@ import com.essycynthia.calibanfoodmobile.ui.theme.Primary
                 }
             }
         )
+        /* DetailsFields(value = confirmPassword,
+             label = "Password",
+             placeholder = "Confirm Password",
+             onValueChaged = onConfirmPasswordChanged)*/
     }
-
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
@@ -275,3 +257,4 @@ import com.essycynthia.calibanfoodmobile.ui.theme.Primary
         )
 
     }
+}
