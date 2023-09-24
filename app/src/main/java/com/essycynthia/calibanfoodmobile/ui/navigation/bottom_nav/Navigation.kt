@@ -1,4 +1,4 @@
-package com.essycynthia.calibanfoodmobile.ui
+package com.essycynthia.calibanfoodmobile.ui.navigation.bottom_nav
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background

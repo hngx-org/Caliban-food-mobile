@@ -7,7 +7,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -22,11 +21,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Surface
@@ -36,6 +37,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -46,16 +48,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import com.essycynthia.calibanfoodmobile.dummyData.RewardHistory
-import com.essycynthia.calibanfoodmobile.ui.BottomScreens
-import com.essycynthia.calibanfoodmobile.ui.Navigation
-import com.essycynthia.calibanfoodmobile.ui.home_screen.HomeScreen
-
+import com.essycynthia.calibanfoodmobile.ui.navigation.user_authenticated_nav.UserAuthenticatedNavigation
 import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
-import com.essycynthia.calibanfoodmobile.ui.withdrawal_screen.WithdrawPage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -76,7 +71,8 @@ class MainActivity : ComponentActivity() {
 
                     actionBar?.hide()
                     installSplashScreen()
-                    Navigation()
+//                    Navigation()
+                    UserAuthenticatedNavigation()
 //                    HomeScreen()
 
 
@@ -94,20 +90,7 @@ fun FreeLunchDashBoard(
     modifier: Modifier = Modifier,
    navController: NavController
 ) {
-   /* val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = BottomScreens.HomeScreen.route ){
-        composable(
-            route = BottomScreens.HomeScreen.route
-        ){
-            HomeScreen()
-        }
-        composable(
-            BottomScreens.WithdrawalScreen.route
-        ){
-            WithdrawPage()
-        }
-    }
-*/
+
 
 
     Card(
@@ -367,11 +350,103 @@ fun RewardHistoryList(
 }
 
 
+    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun RewardHistoryElement(
         rewardHistory: RewardHistory
     ) {
-        Card (
+        Surface(
+            onClick = {  },
+            color = Color.White,
+            modifier = Modifier
+
+                //.fillMaxWidth()
+                .padding(horizontal = 5.dp),
+            shape = RoundedCornerShape(5.dp)
+        ) {
+
+
+            Column(modifier = Modifier.padding(horizontal = 15.dp, vertical = 11.dp)) {
+                Row(
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.orgbuyer),
+                        contentDescription = null,
+                        contentScale = ContentScale.FillBounds,
+                        modifier = Modifier
+                            .size(30.dp)
+                            .clip(CircleShape)
+                    )
+                    Spacer(modifier = Modifier.size(10.dp))
+                    Text(
+                        text = "Essy Sent you free lunch ",
+                        style = TextStyle(
+                            fontSize = 12.sp,
+                            lineHeight = 18.sp,
+                            fontFamily = FontFamily(Font(R.font.roboto)),
+                            fontWeight = FontWeight(500),
+                            color = Color(0xFF333333),
+                            letterSpacing = 0.03.sp,
+                        ),
+                        modifier = Modifier.weight(1f)
+                    )
+
+                    Text(
+                        text = "3",
+                        style = TextStyle(
+                            fontSize = 16.sp,
+                            fontFamily = FontFamily(Font(R.font.poppins)),
+                            fontWeight = FontWeight(600),
+                            color = Color(0xFFFF9405),
+                            letterSpacing = 0.02.sp,
+                        )
+                    )
+
+                    Image(
+                        painter = painterResource(id = R.drawable.pot_of_food),
+                        contentDescription = null,
+                        contentScale = ContentScale.FillBounds,
+                        modifier = Modifier
+                            .size(16.dp)
+                            .padding(1.dp)
+                    )
+                }
+                Row(
+                    horizontalArrangement = Arrangement.End,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(
+                        text = "3hrs",
+                        style = TextStyle(
+                            fontSize = 10.sp,
+                            lineHeight = 15.sp,
+                            fontFamily = FontFamily(Font(R.font.roboto)),
+                            fontWeight = FontWeight(400),
+                            color = Color(0xFF75818F),
+                            letterSpacing = 0.04.sp,
+                        )
+                    )
+                }
+            }
+        }
+    }
+
+
+
+
+
+//    private fun sampleCardData(): List<CardData> {
+//        return listOf(
+//            CardData(R.drawable.orgbuyer, "UduakE", 100, 3),
+//            // Add more CardData objects as needed
+//        )
+//    }
+
+
+/*Card (
             modifier = Modifier
                 .padding(top = 40.dp)
                 .width(344.dp)
@@ -459,14 +534,4 @@ fun RewardHistoryList(
                 // Child views.
             }
 
-        }
-    }
-
-
-
-//    private fun sampleCardData(): List<CardData> {
-//        return listOf(
-//            CardData(R.drawable.orgbuyer, "UduakE", 100, 3),
-//            // Add more CardData objects as needed
-//        )
-//    }
+        }*/

@@ -1,4 +1,4 @@
-package com.essycynthia.calibanfoodmobile.ui.theme
+package com.essycynthia.calibanfoodmobile.ui.create_account_screen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -27,16 +27,29 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
+import com.essycynthia.calibanfoodmobile.data.remote.data_classes.SignUpRequest
+import com.essycynthia.calibanfoodmobile.ui.Screens
+import com.essycynthia.calibanfoodmobile.ui.login_screen.LoginScreen
+import com.essycynthia.calibanfoodmobile.ui.navigation.user_authenticated_nav.UserAuthenticationNavGraph
+import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
+import com.essycynthia.calibanfoodmobile.ui.theme.Grey
+import com.essycynthia.calibanfoodmobile.ui.theme.Neutral1
+import com.essycynthia.calibanfoodmobile.ui.theme.Neutral2
+import com.essycynthia.calibanfoodmobile.ui.theme.Primary
 
-class CreateAccountScreen {
 
+@Composable
+    fun CreateAccountScreen(modifier: Modifier = Modifier) {
+//    val viewModel: CreateAccountViewModel = hiltViewModel()
+    val navController = rememberNavController()
+    UserAuthenticationNavGraph(navController = navController)
 
-    @Composable
-    fun register(modifier: Modifier = Modifier) {
         var email by remember { mutableStateOf("") }
         var password by remember { mutableStateOf("") }
         var firstName by remember {mutableStateOf("")}
         var lastName by remember { mutableStateOf("") }
+        var phoneNumber by remember { mutableStateOf("") }
         var confirmPassword by remember { mutableStateOf("") }
 
         //var showPassword by remember { mutableStateOf("false") }
@@ -68,18 +81,36 @@ class CreateAccountScreen {
                 lastName = lastName,
                 password = password,
                 confirmPassword = confirmPassword,
-                onEmailChange = {email = it
-                },
-                onFirstNameChanged = { firstName= it },
-                onLastNameChanged = {lastName = it },
-                onPasswordChange = {password = it
-                },
-                onConfirmPasswordChanged = {confirmPassword = it
-                }
+                phoneNumber = phoneNumber, // Pass phone number
+                onEmailChange = { email = it },
+                onFirstNameChanged = { firstName = it },
+                onLastNameChanged = { lastName = it },
+                onPasswordChange = { password = it },
+                onConfirmPasswordChanged = { confirmPassword = it },
+                onPhoneNumberChanged = { phoneNumber = it } // Handle phone number change
             )
 
             Spacer(modifier = Modifier.height(55.dp))
-            Button(onClick = { /*TODO*/ },
+            // Observe the state
+//            val createAccountState by viewModel.createAccountState.collectAsState()
+
+//            // Handle navigation and error display
+//            if (createAccountState.isLoading) {
+//                CircularProgressIndicator()
+//            } else {
+//                if (createAccountState.success != null) {
+//                    // Signup was successful, navigate to another screen
+//                    navController.navigate(Screens.LoginScreen.route)
+//                } else if (createAccountState.error != null) {
+//                    // Display error message
+//                    Text(text = createAccountState.error!!, color = Color.Red)
+//                }
+//            }
+            Button(onClick = {
+//                             viewModel.signup(SignUpRequest(email,firstName,lastName,password,phoneNumber))
+                navController.navigate(Screens.LoginScreen.route)
+
+            },
                 shape = RoundedCornerShape(5.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = Primary),
                 modifier = Modifier
@@ -91,54 +122,73 @@ class CreateAccountScreen {
     }
 
     @Composable
-    fun CreateAccountFields(modifier: Modifier = Modifier.fillMaxWidth(), email: String,
-                            firstName : String, lastName: String, password: String,
-                            confirmPassword: String,
-                           onEmailChange: (String) -> Unit,
-                           onFirstNameChanged: (String) -> Unit,
-                           onLastNameChanged: (String) -> Unit,
-                            onPasswordChange: (String) -> Unit,
-                           onConfirmPasswordChanged: (String) -> Unit){
-
+    fun CreateAccountFields(
+        modifier: Modifier = Modifier.fillMaxWidth(),
+        email: String,
+        firstName: String,
+        lastName: String,
+        password: String,
+        confirmPassword: String,
+        phoneNumber: String, // Keep phone number as String
+        onEmailChange: (String) -> Unit,
+        onFirstNameChanged: (String) -> Unit,
+        onLastNameChanged: (String) -> Unit,
+        onPasswordChange: (String) -> Unit,
+        onConfirmPasswordChanged: (String) -> Unit,
+        onPhoneNumberChanged: (String) -> Unit // Update to handle string phone number
+    ) {
         var showPassword by remember {
             mutableStateOf(false)
         }
 
         DetailsFields(
-            value = email ,
-            label ="Email" ,
-            placeholder ="Enter your email address",
-            onValueChaged = onEmailChange)
+            value = email,
+            label = "Email",
+            placeholder = "Enter your email address",
+            onValueChaged = onEmailChange
+        )
 
         Spacer(modifier = Modifier.height(15.dp))
 
         DetailsFields(
-            value = firstName ,
-            label ="FirstName" ,
-            placeholder ="Enter your first name",
-            onValueChaged = onFirstNameChanged)
+            value = firstName,
+            label = "FirstName",
+            placeholder = "Enter your first name",
+            onValueChaged = onFirstNameChanged
+        )
 
         Spacer(modifier = Modifier.height(15.dp))
 
         DetailsFields(
-            value = lastName ,
-            label ="LastName" ,
-            placeholder ="Enter your last name",
-            onValueChaged = onLastNameChanged)
+            value = lastName,
+            label = "LastName",
+            placeholder = "Enter your last name",
+            onValueChaged = onLastNameChanged
+        )
 
         Spacer(modifier = Modifier.height(15.dp))
 
+        DetailsFields(
+            modifier = modifier.fillMaxWidth(),
+            value = phoneNumber, // Keep phone number as String
+            label = "Phone Number", // Update label
+            placeholder = "Enter your phone number", // Update placeholder
+            visualTransformation = VisualTransformation.None,
+            onValueChaged = onPhoneNumberChanged // Updated to handle string phone number
+        )
 
-        DetailsFields(modifier = modifier.fillMaxWidth(),
+        Spacer(modifier = Modifier.height(15.dp))
+
+        DetailsFields(
+            modifier = modifier.fillMaxWidth(),
             value = password,
             label = "Password",
             placeholder = "Enter Password",
             onValueChaged = onPasswordChange,
             trailingIcon = {
-                if(showPassword) {
-                    IconButton(onClick = { showPassword = false}) {
+                if (showPassword) {
+                    IconButton(onClick = { showPassword = false }) {
                         Icon(
-
                             imageVector = Icons.Filled.Visibility,
                             contentDescription = "hide_password"
                         )
@@ -153,18 +203,19 @@ class CreateAccountScreen {
                 }
             }
         )
+
         Spacer(modifier = Modifier.height(15.dp))
 
-        DetailsFields(modifier = modifier.fillMaxWidth(),
+        DetailsFields(
+            modifier = modifier.fillMaxWidth(),
             value = confirmPassword,
             label = "Confirm Password",
             placeholder = "Confirm Password",
             onValueChaged = onConfirmPasswordChanged,
             trailingIcon = {
-                if(showPassword) {
-                    IconButton(onClick = { showPassword = false}) {
+                if (showPassword) {
+                    IconButton(onClick = { showPassword = false }) {
                         Icon(
-
                             imageVector = Icons.Filled.Visibility,
                             contentDescription = "hide_password"
                         )
@@ -179,11 +230,8 @@ class CreateAccountScreen {
                 }
             }
         )
-        /* DetailsFields(value = confirmPassword,
-             label = "Password",
-             placeholder = "Confirm Password",
-             onValueChaged = onConfirmPasswordChanged)*/
     }
+
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
@@ -216,4 +264,3 @@ class CreateAccountScreen {
         )
 
     }
-}
