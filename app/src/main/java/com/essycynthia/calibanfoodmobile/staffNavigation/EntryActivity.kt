@@ -29,6 +29,8 @@ class EntryActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             CalibanFoodMobileTheme {
+
+                var token = true
                 // A surface container using the 'background' color from the theme
                 /*Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -54,8 +56,11 @@ class EntryActivity : ComponentActivity() {
 
                     Button(
                         onClick = {
+                            token = true
                             Intent(this@EntryActivity, SignUpStaff::class.java)
-                                .also { startActivity(it)}
+                                .also {
+                                it .putExtra("EntryMessage", token)
+                                    startActivity(it)}
                             },
                         shape = RoundedCornerShape(5.dp),
                         colors = ButtonDefaults.buttonColors(containerColor = Primary),
@@ -67,8 +72,11 @@ class EntryActivity : ComponentActivity() {
 
                     Button(
                         onClick = {
-                            Intent(this@EntryActivity, SignUpAdmin::class.java)
-                                .also { startActivity(it)}
+                            token = false
+                            Intent(this@EntryActivity, SignUpStaff::class.java)
+                                .also {
+                                    it.putExtra("EntryMessage", token)
+                                    startActivity(it)}
                         },
                         shape = RoundedCornerShape(5.dp),
                         colors = ButtonDefaults.buttonColors(containerColor = Primary),
@@ -77,8 +85,6 @@ class EntryActivity : ComponentActivity() {
                         Text(text = "Sign up as an admin", color = Neutral1)
                     }
                 }
-
-
 
             }
         }

@@ -44,19 +44,16 @@ class SignUpStaff : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             CalibanFoodMobileTheme {
-                // A surface container using the 'background' color from the theme
-                /*Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    colo r = MaterialTheme.colorScheme.background
-                ) {
 
-                }*/
+                val intent = intent
+                val isToken = intent.getBooleanExtra("EntryMessage", true)
+
 
                     var email by remember { mutableStateOf("") }
                     var password by remember { mutableStateOf("") }
                     var firstName by remember { mutableStateOf("") }
                     var lastName by remember { mutableStateOf("") }
-                    var confirmPassword by remember { mutableStateOf("") }
+                    var staffToken by remember { mutableStateOf("") }
 
 
                     //var showPassword by remember { mutableStateOf("false") }
@@ -87,14 +84,14 @@ class SignUpStaff : ComponentActivity() {
                             firstName = firstName,
                             lastName = lastName,
                             password = password,
-                            confirmPassword = confirmPassword,
+                            staffToken = staffToken,
+                            isToken = isToken,
                             onEmailChange = {email = it
                             },
+                            onStaffTokenChanged = {staffToken = it},
                             onFirstNameChanged = { firstName= it },
                             onLastNameChanged = {lastName = it },
                             onPasswordChange = {password = it
-                            },
-                            onConfirmPasswordChanged = {confirmPassword = it
                             }
                         )
 
@@ -126,12 +123,13 @@ class SignUpStaff : ComponentActivity() {
 @Composable
 fun CreateAccountFields(modifier: Modifier = Modifier.fillMaxWidth(), email: String,
                         firstName : String, lastName: String, password: String,
-                        confirmPassword: String,
+                        isToken: Boolean,
+                        staffToken : String,
                         onEmailChange: (String) -> Unit,
                         onFirstNameChanged: (String) -> Unit,
                         onLastNameChanged: (String) -> Unit,
                         onPasswordChange: (String) -> Unit,
-                        onConfirmPasswordChanged: (String) -> Unit){
+                        onStaffTokenChanged: (String) -> Unit){
 
     var showPassword by remember {
         mutableStateOf(false)
@@ -192,6 +190,20 @@ fun CreateAccountFields(modifier: Modifier = Modifier.fillMaxWidth(), email: Str
          label = "Password",
          placeholder = "Confirm Password",
          onValueChaged = onConfirmPasswordChanged)*/
+
+    if(isToken) {
+        DetailsFields(
+            value = staffToken,
+            label = "Staff Token",
+            placeholder = "Enter Token",
+            onValueChaged = onStaffTokenChanged
+        )
+
+        Spacer(modifier = Modifier.height(15.dp))
+    } else {
+
+    }
+
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
