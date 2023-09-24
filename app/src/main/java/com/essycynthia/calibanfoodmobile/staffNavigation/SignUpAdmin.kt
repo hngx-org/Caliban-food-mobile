@@ -1,4 +1,4 @@
-package com.essycynthia.calibanfoodmobile
+package com.essycynthia.calibanfoodmobile.staffNavigation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

@@ -1,4 +1,4 @@
-package com.essycynthia.calibanfoodmobile.Screens
+package com.essycynthia.calibanfoodmobile.staffNavigation.Screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -40,8 +40,8 @@ import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
 import com.essycynthia.calibanfoodmobile.ui.theme.Grey
 import com.essycynthia.calibanfoodmobile.ui.theme.Neutral1
 import com.essycynthia.calibanfoodmobile.ui.theme.Primary
-import com.essycynthia.calibanfoodmobile.viewmodel.HomeViewModel
-import com.essycynthia.calibanfoodmobile.viewmodel.Reward
+import com.essycynthia.calibanfoodmobile.staffNavigation.viewmodel.HomeViewModel
+import com.essycynthia.calibanfoodmobile.staffNavigation.viewmodel.Reward
 
 /*
 class HomeScreen {

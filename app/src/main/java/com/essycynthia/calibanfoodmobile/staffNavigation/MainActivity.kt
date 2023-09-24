@@ -1,7 +1,6 @@
-package com.essycynthia.calibanfoodmobile
+package com.essycynthia.calibanfoodmobile.staffNavigation
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.padding
@@ -18,10 +17,15 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.essycynthia.calibanfoodmobile.Screens.HomeScreen
-import com.essycynthia.calibanfoodmobile.Screens.ProfileScreen
-import com.essycynthia.calibanfoodmobile.Screens.RewardsScreen
-import com.essycynthia.calibanfoodmobile.Screens.withdrawal_screen.WithdrawScreen
+import com.essycynthia.calibanfoodmobile.HomeDestination
+import com.essycynthia.calibanfoodmobile.ProfileDestination
+import com.essycynthia.calibanfoodmobile.RewardDestination
+import com.essycynthia.calibanfoodmobile.staffNavigation.Screens.HomeScreen
+import com.essycynthia.calibanfoodmobile.staffNavigation.Screens.ProfileScreen
+import com.essycynthia.calibanfoodmobile.staffNavigation.Screens.RewardsScreen
+import com.essycynthia.calibanfoodmobile.staffNavigation.Screens.withdrawal_screen.WithdrawScreen
+import com.essycynthia.calibanfoodmobile.WithdrawDestination
+import com.essycynthia.calibanfoodmobile.allDestinations
 import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
 
 import dagger.hilt.android.AndroidEntryPoint

@@ -1,4 +1,4 @@
-package com.essycynthia.calibanfoodmobile.viewmodel
+package com.essycynthia.calibanfoodmobile.staffNavigation.viewmodel
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

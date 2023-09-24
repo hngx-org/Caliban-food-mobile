@@ -1,4 +1,4 @@
-package com.essycynthia.calibanfoodmobile.Screens
+package com.essycynthia.calibanfoodmobile.staffNavigation.Screens
 
 
 import android.annotation.SuppressLint

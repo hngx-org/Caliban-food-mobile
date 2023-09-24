@@ -1,4 +1,4 @@
-package com.essycynthia.calibanfoodmobile.Screens.withdrawal_screen
+package com.essycynthia.calibanfoodmobile.staffNavigation.Screens.withdrawal_screen
 
 
 import android.annotation.SuppressLint
@@ -59,14 +59,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
 import com.essycynthia.calibanfoodmobile.R
-import com.essycynthia.calibanfoodmobile.viewmodel.WithdrawViewModel
+import com.essycynthia.calibanfoodmobile.staffNavigation.viewmodel.WithdrawViewModel
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "UnrememberedMutableState")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WithdrawScreen(modifier: Modifier = Modifier,
-                   withdrawViewModel: WithdrawViewModel = WithdrawViewModel()) {
+                   withdrawViewModel: WithdrawViewModel = WithdrawViewModel()
+) {
     var title by remember { mutableStateOf("Withdraw") }
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
     val categories =

@@ -1,4 +1,4 @@
-package com.essycynthia.calibanfoodmobile.viewmodel
+package com.essycynthia.calibanfoodmobile.staffNavigation.viewmodel
 
 data class Reward(
     val name: String,
