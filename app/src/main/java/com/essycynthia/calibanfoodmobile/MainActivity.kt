@@ -20,6 +20,7 @@ import com.essycynthia.calibanfoodmobile.organizationfreelunch.CardData
 import com.essycynthia.calibanfoodmobile.organizationfreelunch.OrganizationFreeLunchReward
 import com.essycynthia.calibanfoodmobile.profilescreen.ProfilePage
 import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
+import com.essycynthia.calibanfoodmobile.ui.theme.screens.SendLunchRewardScreen
 
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,7 +30,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         // for splash screen
-        installSplashScreen()
+        //installSplashScreen()
 
         setContent {
             CalibanFoodMobileTheme {
@@ -43,7 +44,7 @@ class MainActivity : ComponentActivity() {
                  //   OrganizationFreeLunchReward(cards = sampleCardData() )
                    // WithdrawPage()
                     //InviteUserOrg()
-                    StaffProfileScreen()
+                    SendLunchRewardScreen()
                 }
             }
         }

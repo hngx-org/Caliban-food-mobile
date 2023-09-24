@@ -42,31 +42,36 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.essycynthia.calibanfoodmobile.Greeting
 import com.essycynthia.calibanfoodmobile.R
+import com.essycynthia.calibanfoodmobile.data.remote.dto.GetALunchDto
 import com.essycynthia.calibanfoodmobile.dummyData.ColleagueData
 import com.essycynthia.calibanfoodmobile.dummyData.RewardHistory
 import com.essycynthia.calibanfoodmobile.dummyData.colleague
 import com.essycynthia.calibanfoodmobile.dummyData.colleaguesList
 import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
+import dagger.hilt.android.lifecycle.HiltViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ReceivedRewardHistoryScreen(){
+fun ReceivedRewardHistoryScreen(
+    receivedRewardHistoryViewModel: ReceivedRewardHistoryViewModel = hiltViewModel()
+){
     Column {
         TopAppBar(
             title = {Text(text = "Rewards History")},
             modifier = Modifier.background(Color.White),
         )
         
-        ReceivedRewardHistory(rewardHistories = colleaguesList)
+        ReceivedRewardHistory(receivedRewardHistoryViewModel)
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ReceivedRewardHistory(
-    rewardHistories: List<RewardHistory>
+    receivedRewardHistoryViewModel: ReceivedRewardHistoryViewModel
 ){
     Surface(
         color = Color(0xFFFAFAFA)
@@ -76,12 +81,12 @@ fun ReceivedRewardHistory(
             LazyColumn(
                 verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterVertically)
                 ){
-                rewardHistories.forEach {
+                receivedRewardHistoryViewModel.receivedRewards?.forEach {
                     item {
-                        ReceivedUserDay(it.day)
+                        ReceivedUserDay(it.createdAt)
                     }
-                    items(it.colleagueDataList){colleagueData ->
-                        ReceivedUserRow(colleagueData)
+                    items(it.lunchList){getALunchDto ->
+                        ReceivedUserRow(getALunchDto)
                     }
                 }
             }
@@ -108,7 +113,7 @@ fun ReceivedUserDay(day: String){
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 //Composable for a specific row element
-fun ReceivedUserRow(colleagueData: ColleagueData){
+fun ReceivedUserRow(getALunchDto: GetALunchDto){
     Surface(
         onClick = { /*Navigate to reward screen */ },
         color = Color.White,
@@ -129,7 +134,7 @@ fun ReceivedUserRow(colleagueData: ColleagueData){
                 )
                 Spacer(modifier = Modifier.size(10.dp))
                 Text(
-                    text = "${colleagueData.name} ",
+                    text = "${getALunchDto.senderId} ",
                     style = TextStyle(
                         fontSize = 12.sp,
                         lineHeight = 18.sp,
@@ -141,7 +146,7 @@ fun ReceivedUserRow(colleagueData: ColleagueData){
                     modifier = Modifier.weight(1f))
 
                 Text(
-                    text = colleagueData.numberOfMeals.toString(),
+                    text = getALunchDto.quantity.toString(),
                     style = TextStyle(
                         fontSize = 16.sp,
                         fontFamily = FontFamily(Font(R.font.poppins)),
@@ -188,7 +193,7 @@ fun NavigationButtons(){
         val colorSent = if(!selected) Color(0xFFFF9405) else Color.White
         Spacer(modifier = Modifier.size(6.dp))
         Button(onClick = { selected = true}, colors = ButtonDefaults.buttonColors(containerColor = colorReceived), shape = RoundedCornerShape(30.dp)) {
-            Text(text = "Received")
+            Text(text = "Lunches")
         }
         Button(onClick = { selected = false }, colors = ButtonDefaults.buttonColors(containerColor = colorSent), shape = RoundedCornerShape(30.dp)) {
             Text(text = "Given")
