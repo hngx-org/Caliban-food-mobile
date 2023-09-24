@@ -7,7 +7,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -49,16 +48,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import com.essycynthia.calibanfoodmobile.dummyData.RewardHistory
-import com.essycynthia.calibanfoodmobile.ui.BottomScreens
-import com.essycynthia.calibanfoodmobile.ui.Navigation
-import com.essycynthia.calibanfoodmobile.ui.home_screen.HomeScreen
-
+import com.essycynthia.calibanfoodmobile.ui.navigation.user_authenticated_nav.UserAuthenticatedNavigation
 import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
-import com.essycynthia.calibanfoodmobile.ui.withdrawal_screen.WithdrawPage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -79,7 +71,8 @@ class MainActivity : ComponentActivity() {
 
                     actionBar?.hide()
                     installSplashScreen()
-                    Navigation()
+//                    Navigation()
+                    UserAuthenticatedNavigation()
 //                    HomeScreen()
 
 
