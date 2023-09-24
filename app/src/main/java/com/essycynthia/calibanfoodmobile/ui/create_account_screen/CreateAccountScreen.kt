@@ -19,6 +19,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -51,6 +52,12 @@ import com.essycynthia.calibanfoodmobile.ui.theme.Primary
         var lastName by remember { mutableStateOf("") }
         var phoneNumber by remember { mutableStateOf("") }
         var confirmPassword by remember { mutableStateOf("") }
+
+    val isDataValidated by remember {
+        derivedStateOf {
+            email != "" && firstName != "" && lastName != "" && password != "" && confirmPassword != "" && phoneNumber != ""
+        }
+    }
 
         //var showPassword by remember { mutableStateOf("false") }
 
@@ -114,7 +121,8 @@ import com.essycynthia.calibanfoodmobile.ui.theme.Primary
                 shape = RoundedCornerShape(5.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = Primary),
                 modifier = Modifier
-                    .fillMaxWidth()) {
+                    .fillMaxWidth(),
+                enabled = isDataValidated) {
                 Text(text = "Continue", color = Neutral1)
 
             }
