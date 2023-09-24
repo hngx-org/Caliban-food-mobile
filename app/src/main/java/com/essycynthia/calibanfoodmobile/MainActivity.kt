@@ -238,7 +238,7 @@ fun SendLunchReward(modifier: Modifier = Modifier) {
 
                 Button(
                     modifier = modifier.padding(top = 10.dp),
-                    onClick = { /*TODO*/ },
+                    onClick = {  },
                     enabled = true,
                     colors = ButtonDefaults.buttonColors(Color(0xFFFF9405)),
                     shape = ShapeDefaults.Small
