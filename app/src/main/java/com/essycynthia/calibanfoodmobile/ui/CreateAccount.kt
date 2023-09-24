@@ -26,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.Visibility
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
