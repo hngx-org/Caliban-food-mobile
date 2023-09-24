@@ -71,13 +71,19 @@ class MainActivity : ComponentActivity() {
                 ) {
                     val navController = rememberNavController()
                     actionBar?.hide()
+                    installSplashScreen()
+                    val navController = rememberNavController()
+
                     //installSplashScreen()
 //                    Navigation()
 
 //                    UserAuthenticatedNavigation()
+                    LoginScreen(Modifier.padding(2.dp),navController)
+
                     LoginScreen(Modifier.padding(2.dp), navController )
 
                     UserAuthenticatedNavigation()
+
 
 //                    HomeScreen()
 

@@ -1,4 +1,4 @@
-package com.essycynthia.calibanfoodmobile.ui.withdrawal_screen
+package com.essycynthia.calibanfoodmobile.staffNavigation.Screens.withdrawal_screen
 
 
 import android.annotation.SuppressLint
@@ -59,12 +59,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
 import com.essycynthia.calibanfoodmobile.R
+import com.essycynthia.calibanfoodmobile.staffNavigation.viewmodel.WithdrawViewModel
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "UnrememberedMutableState")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun WithdrawPage() {
+fun WithdrawScreen(modifier: Modifier = Modifier,
+                   withdrawViewModel: WithdrawViewModel = WithdrawViewModel()
+) {
     var title by remember { mutableStateOf("Withdraw") }
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
     val categories = mutableStateListOf<String>("First bank Nigeria", "Zenith Bank", "UBA", "Opay", "Palmpay")
@@ -142,7 +145,7 @@ fun WithdrawPage() {
 
 
                         Text(
-                            text = "100",
+                            text = withdrawViewModel.withdrawState.availableFreeLunch.toString(),
                             Modifier
 
                                 .width(40.dp)
@@ -557,12 +560,8 @@ fun WithdrawPage() {
 
 
             }
-
         }
-
-
     }
-
 }
 // button
 
