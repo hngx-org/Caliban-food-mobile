@@ -15,9 +15,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -76,10 +80,26 @@ fun ProfilePage() {
                         color = Color(0xFF333333),
                         letterSpacing = 0.02.sp
                     )
-                }, colors = TopAppBarDefaults.smallTopAppBarColors(
+                },
+                actions = {
+                    IconButton(onClick = { }) {
+                        Icon(
+                            imageVector = Icons.Default.ExitToApp,
+                            contentDescription = "Logout"
+                        )
+
+
+                    }
+                },
+
+                colors = TopAppBarDefaults.smallTopAppBarColors(
                     containerColor = Color.White,
                     titleContentColor = Color(0xFF333333)
-                ), scrollBehavior = scrollBehavior
+                ),
+
+
+
+                scrollBehavior = scrollBehavior
             )
         }
 

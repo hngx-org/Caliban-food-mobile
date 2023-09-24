@@ -161,6 +161,7 @@ fun FreeLunchDashBoard(
 
             Button(
                 onClick = { navController.navigate(BottomScreens.WithdrawalScreen.route)},
+              //  onClick = { navController.navigate(BottomScreens.WithdrawalScreen.route)},
                 enabled = true,
                 colors = ButtonDefaults.buttonColors(
                     containerColor = MaterialTheme.colorScheme.onPrimary
@@ -255,11 +256,7 @@ fun SendLunchReward(modifier: Modifier = Modifier) {
                             letterSpacing = 0.15.sp,
                         )
                     )
-                  /*  Text(
-                        text = "Send Lunch Reward",
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onPrimary
-                    )*/
+
                 }
             }
 
@@ -269,12 +266,7 @@ fun SendLunchReward(modifier: Modifier = Modifier) {
                 Modifier
                     .fillMaxWidth()
                     .fillMaxHeight()
-                   // .width(154.00008.dp)
-                   //.height(154.81921.dp)
-                  //  .padding(top = 2.45745.dp, end = 5.73405.dp, bottom = 3.27659.dp)
-              /*  Modifier
-                    .height(250.dp)
-                    .width(30.dp)*/
+
             )
         }
 
