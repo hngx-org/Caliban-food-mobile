@@ -48,6 +48,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.essycynthia.calibanfoodmobile.dummyData.RewardHistory
 import com.essycynthia.calibanfoodmobile.ui.login_screen.LoginScreen
 import com.essycynthia.calibanfoodmobile.ui.navigation.user_authenticated_nav.UserAuthenticatedNavigation
@@ -72,9 +73,10 @@ class MainActivity : ComponentActivity() {
 
                     actionBar?.hide()
                     installSplashScreen()
+                    val navController = rememberNavController()
 //                    Navigation()
 //                    UserAuthenticatedNavigation()
-                    LoginScreen()
+                    LoginScreen(Modifier.padding(2.dp),navController)
 //                    HomeScreen()
 
 
