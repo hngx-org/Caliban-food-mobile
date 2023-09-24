@@ -47,17 +47,18 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.essycynthia.calibanfoodmobile.R
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun InviteUserOrg() {
+fun InviteUserOrg(
+    inviteUserViewModel: InviteUserViewModel = hiltViewModel()
+) {
 
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
-    var recipient by remember { mutableStateOf("owolabigbemisola@gmail.com, Iyanu@gmail.com") }
-    var message by remember { mutableStateOf("Encourage users to join honorwave and start sending free lunch to their peer.") }
     var inviteDialog by remember { mutableStateOf(false) }
     Scaffold(
         topBar = {
@@ -144,9 +145,9 @@ fun InviteUserOrg() {
 
 
                 TextField(
-                    value = recipient,
+                    value = inviteUserViewModel.recipient,
                     onValueChange = {
-                        recipient = it
+                        inviteUserViewModel.recipient = it
                     },
                     modifier = Modifier
 
@@ -225,9 +226,9 @@ fun InviteUserOrg() {
 
 
                 TextField(
-                    value = message,
+                    value = inviteUserViewModel.message,
                     onValueChange = {
-                        message = it
+                        inviteUserViewModel.message = it
                     },
                     modifier = Modifier
 
@@ -272,7 +273,7 @@ fun InviteUserOrg() {
                     onClick = {
                         // showDialog = true
                         inviteDialog = true
-
+                        inviteUserViewModel.createOrganisationInvite(inviteUserViewModel.recipient)
 
                     },
                     modifier = Modifier

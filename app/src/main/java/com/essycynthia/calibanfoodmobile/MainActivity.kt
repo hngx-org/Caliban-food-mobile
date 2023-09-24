@@ -46,8 +46,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+//import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.essycynthia.calibanfoodmobile.dummyData.RewardHistory
 import com.essycynthia.calibanfoodmobile.ui.navigation.user_authenticated_nav.UserAuthenticatedNavigation
 import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
@@ -68,11 +69,16 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
+                    val navController = rememberNavController()
                     actionBar?.hide()
-                    installSplashScreen()
+                    //installSplashScreen()
 //                    Navigation()
+
+//                    UserAuthenticatedNavigation()
+                    LoginScreen(Modifier.padding(2.dp), navController )
+
                     UserAuthenticatedNavigation()
+
 //                    HomeScreen()
 
 
