@@ -46,6 +46,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
 import com.essycynthia.calibanfoodmobile.dummyData.RewardHistory
 import com.essycynthia.calibanfoodmobile.ui.BottomScreens
 import com.essycynthia.calibanfoodmobile.ui.Navigation
@@ -99,7 +100,7 @@ fun FreeLunchDashBoard(
             //.clip(shape = ShapeDefaults.Small)
             .fillMaxWidth()
             .height(170.dp)
-            .padding(start = 16.dp, end = 16.dp, )
+            .padding(start = 16.dp, end = 16.dp,)
 
     ) {
         Column(
@@ -220,7 +221,7 @@ fun SendLunchReward(modifier: Modifier = Modifier) {
                     text = "Recognize your colleague for their \n " +
                             "outstanding work by sending them \n" +
                             "Free Lunch rewards. \uD83D\uDC4F \uD83C\uDF1F",
-                    modifier =Modifier
+                    modifier = Modifier
                         .width(198.dp)
                         .height(54.dp),
 
@@ -238,7 +239,7 @@ fun SendLunchReward(modifier: Modifier = Modifier) {
 
                 Button(
                     modifier = modifier.padding(top = 10.dp),
-                    onClick = {  },
+                    onClick = { },
                     enabled = true,
                     colors = ButtonDefaults.buttonColors(Color(0xFFFF9405)),
                     shape = ShapeDefaults.Small
