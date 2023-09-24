@@ -102,6 +102,7 @@ dependencies {
 
     implementation("com.google.dagger:hilt-android:2.46.1")
     implementation("androidx.compose.ui:ui-android:1.5.1")
+    implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
     kapt("com.google.dagger:hilt-android-compiler:2.46.1")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
