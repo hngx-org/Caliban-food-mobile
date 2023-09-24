@@ -1,5 +1,7 @@
 package com.essycynthia.calibanfoodmobile.ui.navigation.bottom_nav
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -9,6 +11,7 @@ import com.essycynthia.calibanfoodmobile.ui.profile_screen.ProfilePage
 import com.essycynthia.calibanfoodmobile.ui.reward_screen.ReceivedRewardHistoryScreen
 import com.essycynthia.calibanfoodmobile.ui.withdrawal_screen.WithdrawPage
 
+@RequiresApi(Build.VERSION_CODES.Q)
 @Composable
 fun BottomNavGraph(navContoller: NavHostController) {
 
