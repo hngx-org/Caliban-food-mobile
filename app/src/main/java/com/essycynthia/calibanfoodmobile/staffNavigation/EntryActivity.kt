@@ -31,13 +31,6 @@ class EntryActivity : ComponentActivity() {
             CalibanFoodMobileTheme {
 
                 var token = true
-                // A surface container using the 'background' color from the theme
-                /*Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    WelcomeScreen()
-                }*/
                 Column(
                     modifier = Modifier.fillMaxSize()
                         .padding(16.dp)
@@ -57,7 +50,7 @@ class EntryActivity : ComponentActivity() {
                     Button(
                         onClick = {
                             token = true
-                            Intent(this@EntryActivity, SignUpStaff::class.java)
+                            Intent(this@EntryActivity, SignUpActivity::class.java)
                                 .also {
                                 it .putExtra("EntryMessage", token)
                                     startActivity(it)}
@@ -73,7 +66,7 @@ class EntryActivity : ComponentActivity() {
                     Button(
                         onClick = {
                             token = false
-                            Intent(this@EntryActivity, SignUpStaff::class.java)
+                            Intent(this@EntryActivity, SignUpActivity::class.java)
                                 .also {
                                     it.putExtra("EntryMessage", token)
                                     startActivity(it)}

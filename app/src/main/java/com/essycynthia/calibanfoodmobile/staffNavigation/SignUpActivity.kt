@@ -39,7 +39,7 @@ import com.essycynthia.calibanfoodmobile.ui.theme.Neutral1
 import com.essycynthia.calibanfoodmobile.ui.theme.Neutral2
 import com.essycynthia.calibanfoodmobile.ui.theme.Primary
 
-class SignUpStaff : ComponentActivity() {
+class SignUpActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -97,7 +97,7 @@ class SignUpStaff : ComponentActivity() {
 
                         Spacer(modifier = Modifier.height(20.dp))
                         Button(onClick = {
-                            Intent(this@SignUpStaff, LoginActivity::class.java).also {
+                            Intent(this@SignUpActivity, LoginActivity::class.java).also {
                                 startActivity(it)
                             }
                             Log.d("Debuggg", "Gooooooo")

@@ -38,7 +38,9 @@ class LoginActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            var noToken = false
+
+            var isToken = true
+
             CalibanFoodMobileTheme {
 
                     var loginEmail by remember {
@@ -70,9 +72,18 @@ class LoginActivity : ComponentActivity() {
 
 
                         OutlinedButton(
-                            onClick = {  Intent(this@LoginActivity, MainActivity::class.java).also {
-                                startActivity(it)
-                            } },
+                            onClick = { if(isToken) {
+                                Intent(this@LoginActivity,
+                                    MainActivityAdmin::class.java).also {
+                                    startActivity(it) }
+                            } else {
+                                Intent(this@LoginActivity,
+                                    MainActivity::class.java).also {
+                                    startActivity(it) }
+
+                            }
+
+                                      },
                             shape = RoundedCornerShape(5.dp),
 
                             border = BorderStroke(
@@ -85,10 +96,10 @@ class LoginActivity : ComponentActivity() {
                                     top = 25.dp,
                                 )
                         ) {
-                            Image(modifier = Modifier.size(32.dp),
+                           /* Image(modifier = Modifier.size(32.dp),
                                 painter = painterResource(id = R.drawable.google_icon),
                                 contentDescription = "Google",
-                                contentScale = ContentScale.Crop)
+                                contentScale = ContentScale.Crop)*/
 
                             Text(text = "Login",
                                 color = Neutral2,
@@ -96,11 +107,6 @@ class LoginActivity : ComponentActivity() {
                                 fontSize = 14.sp)
                         }
                     }
-
-
-
-
-
             }
         }
     }
@@ -165,19 +171,3 @@ fun LoginDetailsFields(
 }
 
 
-/*
-@Composable
-fun Greeting2(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview4() {
-    CalibanFoodMobileTheme {
-        Greeting2("Android")
-    }
-}*/

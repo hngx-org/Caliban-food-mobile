@@ -8,4 +8,6 @@
     <string name="title_activity_sign_up_admin">SignUpAdmin</string>
     <string name="title_activity_sign_up_staff">SignUpStaff</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_home_screen_admin">HomeScreenAdmin</string>
+    <string name="title_activity_user_invite">UserInviteActivity</string>
 </resources>
