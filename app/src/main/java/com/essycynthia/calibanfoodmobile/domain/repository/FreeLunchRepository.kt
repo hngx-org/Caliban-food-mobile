@@ -8,7 +8,10 @@ import com.essycynthia.calibanfoodmobile.data.remote.data_classes.GetALunchRespo
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.GetAllLunchesResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.LoginRequest
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.LoginResponse
+import com.essycynthia.calibanfoodmobile.data.remote.data_classes.ReceivedLunches
+import com.essycynthia.calibanfoodmobile.data.remote.data_classes.ResetPasswordEmail
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.SendLunchResponse
+import com.essycynthia.calibanfoodmobile.data.remote.data_classes.SentLunchResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.SignUpRequest
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.SignUpResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.StaffSignUpResponse
@@ -34,6 +37,14 @@ class FreeLunchRepository @Inject constructor(
             Resource.Error("An error occurred during login", null)
         }
     }
+    suspend fun resetPassword(authorization: String, email: String): Resource<ResetPasswordEmail> {
+        return try {
+            val response = api.resetRequest("Bearer $authorization", email)
+            Resource.Success(response)
+        } catch (e: Exception) {
+            Resource.Error(e.message ?: "An unexpected error occurred")
+        }
+    }
 
     suspend fun signup(signUpRequest: SignUpRequest) : Resource<SignUpResponseDto> {
          return try {
@@ -45,6 +56,23 @@ class FreeLunchRepository @Inject constructor(
          }
 
     }
+    suspend fun getSentLunches(token: String): Resource<SentLunchResponse> {
+        return try {
+            val response = api.getSentLunches("Bearer $token")
+            Resource.Success(response)
+        } catch (e: Exception) {
+            Resource.Error(e.message ?: "An unexpected error occurred")
+        }
+    }
+    suspend fun getReceivedLunches(token: String): Resource<ReceivedLunches> {
+        return try {
+            val response = api.getReceivedLunches("Bearer $token")
+            Resource.Success(response)
+        } catch (e: Exception) {
+            Resource.Error(e.message ?: "An unexpected error occurred")
+        }
+    }
+
 
     suspend fun createOrganization(
         accessToken: String,
