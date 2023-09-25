@@ -1,9 +1,9 @@
 package com.essycynthia.calibanfoodmobile.domain.repository
 
+import com.essycynthia.calibanfoodmobile.data.remote.CreateOrganizationInviteResponse
 import com.essycynthia.calibanfoodmobile.data.remote.FoodApi
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.BankRequest
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.BankResponse
-import com.essycynthia.calibanfoodmobile.data.remote.data_classes.CreateOrganizationInviteResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.GetALunchResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.GetAllLunchesResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.LoginRequest
@@ -11,12 +11,14 @@ import com.essycynthia.calibanfoodmobile.data.remote.data_classes.LoginResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.SendLunchResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.SignUpRequest
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.SignUpResponse
+import com.essycynthia.calibanfoodmobile.data.remote.data_classes.StaffSignUpResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.UpdateOrganizationLaunchPriceResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.UpdateOrganizationLaunchWalletBalanceResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.UserProfileResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.UserResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.UsersResponse
 import com.essycynthia.calibanfoodmobile.data.remote.dto.CreateOrganizationRequest
+import com.essycynthia.calibanfoodmobile.data.remote.dto.SignUpResponseDto
 import com.essycynthia.calibanfoodmobile.data.remote.dto.StaffSignUpRequest
 import com.essycynthia.calibanfoodmobile.util.Resource
 import javax.inject.Inject
@@ -33,26 +35,34 @@ class FreeLunchRepository @Inject constructor(
         }
     }
 
-    suspend fun signup(signUpRequest: SignUpRequest): Resource<SignUpResponse> {
-        return try {
-            val response = api.signup(signUpRequest)
-            Resource.Success(response)
+    suspend fun signup(signUpRequest: SignUpRequest) : Resource<SignUpResponseDto> {
+         return try {
+            val response= api.signup(signUpRequest)
+             Resource.Success(response)
         } catch (e: Exception) {
             Resource.Error("An error occurred during signup", null)
-        }
+
+         }
 
     }
 
-    suspend fun createOrganization(createOrganizationRequest: CreateOrganizationRequest): Resource<SignUpResponse> {
-        return try {
-            val response = api.createOrganization(createOrganizationRequest)
-            Resource.Success(response)
+    suspend fun createOrganization(
+        accessToken: String,
+        request: CreateOrganizationRequest
+    ) {
+        // Set up the headers with the access token
+        val headers = mapOf("Authorization" to "Bearer $accessToken")
+
+        try {
+            // Make the API request
+            api.createOrganization(headers, request)
         } catch (e: Exception) {
-            Resource.Error("An error occurred while creating an organization", null)
+            Resource.Error("An error occurred during staff signup", null)
+            throw e
         }
     }
 
-    suspend fun staffSignup(staffSignUpRequest: StaffSignUpRequest): Resource<SignUpResponse> {
+    suspend fun staffSignup(staffSignUpRequest: StaffSignUpRequest): Resource<StaffSignUpResponse> {
         return try {
             val response = api.staffSignup(staffSignUpRequest)
             Resource.Success(response)

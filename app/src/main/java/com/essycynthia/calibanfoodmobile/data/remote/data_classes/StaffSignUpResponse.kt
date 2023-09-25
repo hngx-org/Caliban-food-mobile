@@ -1,7 +1,7 @@
 package com.essycynthia.calibanfoodmobile.data.remote.data_classes
 
-data class CreateOrganizationInviteResponse(
-    val `data`: Any,
+data class StaffSignUpResponse(
+    val `data`: SignUpResponseData,
     val message: String,
-    val statusCode: Int
+    val status: Int
 )
