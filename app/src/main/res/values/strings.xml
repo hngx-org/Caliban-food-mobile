@@ -9,4 +9,5 @@
     <string name="title_activity_sign_up_staff">SignUpStaff</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_reset_password">ResetPassword</string>
+    <string name="title_activity_enter_otp_screen">EnterOtpScreen</string>
 </resources>

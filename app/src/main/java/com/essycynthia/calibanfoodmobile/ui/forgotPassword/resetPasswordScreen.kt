@@ -12,14 +12,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Visibility
-import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
@@ -34,7 +29,6 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.essycynthia.calibanfoodmobile.staffNavigation.LoginActivity
 import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
 import com.essycynthia.calibanfoodmobile.ui.theme.Grey
 import com.essycynthia.calibanfoodmobile.ui.theme.Neutral1
@@ -48,12 +42,10 @@ class resetPasswordScreen : ComponentActivity() {
             CalibanFoodMobileTheme {
 
                 var email by remember { mutableStateOf("") }
-                var password by remember { mutableStateOf("") }
-                var confirmPassword by remember { mutableStateOf("") }
 
                 val isDataValidated by remember {
                     derivedStateOf {
-                        email != "" && password != "" && confirmPassword != ""
+                        email != ""
                     }
                 }
 
@@ -79,20 +71,14 @@ class resetPasswordScreen : ComponentActivity() {
                     CreateAccountFields(
                         modifier = Modifier.fillMaxWidth(),
                         email = email,
-                        password = password,
-                        confirmPassword = confirmPassword,
                         onEmailChange = {email = it
                         },
-                        onPasswordChange = {password = it
-                        },
-                        onConfirmPasswordChanged = {confirmPassword = it
-                        }
                     )
 
                     Spacer(modifier = Modifier.height(55.dp))
                     Button(onClick = {
 
-                        Intent(this@resetPasswordScreen, LoginActivity::class.java).also {
+                        Intent(this@resetPasswordScreen, enterOtpScreen::class.java).also {
                             startActivity(it)
                         }
                         Log.d("Debuggg", "Gooooooo")
@@ -104,7 +90,7 @@ class resetPasswordScreen : ComponentActivity() {
                             .fillMaxWidth(),
                         enabled = isDataValidated
                     ) {
-                        Text(text = "Reset Password", color = Neutral1)
+                        Text(text = "Continue", color = Neutral1)
                     }
                 }
             }
@@ -115,75 +101,23 @@ class resetPasswordScreen : ComponentActivity() {
 
 @Composable
 fun CreateAccountFields(modifier: Modifier = Modifier.fillMaxWidth(), email: String,
-                        password: String,
-                        confirmPassword: String,
+
                         onEmailChange: (String) -> Unit,
-                        onPasswordChange: (String) -> Unit,
-                        onConfirmPasswordChanged: (String) -> Unit){
+                        ) {
 
     var showPassword by remember {
         mutableStateOf(false)
     }
 
     DetailsFields(
-        value = email ,
-        label ="Email" ,
-        placeholder ="Enter your email address",
-        onValueChaged = onEmailChange)
-
-    Spacer(modifier = Modifier.height(15.dp))
-
-    DetailsFields(modifier = modifier.fillMaxWidth(),
-        value = password,
-        label = "Password",
-        placeholder = "Enter Password",
-        onValueChaged = onPasswordChange,
-        trailingIcon = {
-            if(showPassword) {
-                IconButton(onClick = { showPassword = false}) {
-                    Icon(
-
-                        imageVector = Icons.Filled.Visibility,
-                        contentDescription = "hide_password"
-                    )
-                }
-            } else {
-                IconButton(onClick = { showPassword = true }) {
-                    Icon(
-                        imageVector = Icons.Filled.VisibilityOff,
-                        contentDescription = "hide_password"
-                    )
-                }
-            }
-        }
+        value = email,
+        label = "Email",
+        placeholder = "Enter your email address",
+        onValueChaged = onEmailChange
     )
 
     Spacer(modifier = Modifier.height(15.dp))
 
-    DetailsFields(modifier = modifier.fillMaxWidth(),
-        value = confirmPassword,
-        label = "Confirm Password",
-        placeholder = "Confirm Password",
-        onValueChaged = onConfirmPasswordChanged,
-        trailingIcon = {
-            if(showPassword) {
-                IconButton(onClick = { showPassword = false}) {
-                    Icon(
-
-                        imageVector = Icons.Filled.Visibility,
-                        contentDescription = "hide_password"
-                    )
-                }
-            } else {
-                IconButton(onClick = { showPassword = true }) {
-                    Icon(
-                        imageVector = Icons.Filled.VisibilityOff,
-                        contentDescription = "hide_password"
-                    )
-                }
-            }
-        }
-    )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
