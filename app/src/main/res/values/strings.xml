@@ -8,4 +8,5 @@
     <string name="title_activity_sign_up_admin">SignUpAdmin</string>
     <string name="title_activity_sign_up_staff">SignUpStaff</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="title_reset_password">ResetPassword</string>
 </resources>
