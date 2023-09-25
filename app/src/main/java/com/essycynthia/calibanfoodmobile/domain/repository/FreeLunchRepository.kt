@@ -1,9 +1,9 @@
 package com.essycynthia.calibanfoodmobile.domain.repository
 
+import com.essycynthia.calibanfoodmobile.data.remote.CreateOrganizationInviteResponse
 import com.essycynthia.calibanfoodmobile.data.remote.FoodApi
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.BankRequest
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.BankResponse
-import com.essycynthia.calibanfoodmobile.data.remote.data_classes.CreateOrganizationInviteResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.GetALunchResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.GetAllLunchesResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.LoginRequest
@@ -11,6 +11,7 @@ import com.essycynthia.calibanfoodmobile.data.remote.data_classes.LoginResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.SendLunchResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.SignUpRequest
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.SignUpResponse
+import com.essycynthia.calibanfoodmobile.data.remote.data_classes.StaffSignUpResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.UpdateOrganizationLaunchPriceResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.UpdateOrganizationLaunchWalletBalanceResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.UserProfileResponse
@@ -61,7 +62,7 @@ class FreeLunchRepository @Inject constructor(
         }
     }
 
-    suspend fun staffSignup(staffSignUpRequest: StaffSignUpRequest): Resource<SignUpResponse> {
+    suspend fun staffSignup(staffSignUpRequest: StaffSignUpRequest): Resource<StaffSignUpResponse> {
         return try {
             val response = api.staffSignup(staffSignUpRequest)
             Resource.Success(response)

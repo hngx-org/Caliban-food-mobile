@@ -22,10 +22,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
-import com.essycynthia.calibanfoodmobile.FreeLunchDashBoard
-import com.essycynthia.calibanfoodmobile.RewardHistoryList
-import com.essycynthia.calibanfoodmobile.SendLunchReward
+
 import com.essycynthia.calibanfoodmobile.dummyData.colleaguesList
+import com.essycynthia.calibanfoodmobile.staffNavigation.FreeLunchDashBoard
+import com.essycynthia.calibanfoodmobile.staffNavigation.RewardHistoryList
+import com.essycynthia.calibanfoodmobile.staffNavigation.SendLunchReward
 
 @RequiresApi(Build.VERSION_CODES.Q)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")

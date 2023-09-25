@@ -38,7 +38,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.essycynthia.calibanfoodmobile.R
-import com.essycynthia.calibanfoodmobile.data.remote.dto.GetALunchDto
+import com.essycynthia.calibanfoodmobile.data.remote.data_classes.GetALunchDto
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -72,7 +72,8 @@ fun ReceivedRewardHistory(
                     item {
                         ReceivedUserDay(it.createdAt)
                     }
-                    items(it.lunchList){getALunchDto ->
+                    items(it.lunchList){
+                            getALunchDto ->
                         ReceivedUserRow(getALunchDto)
                     }
                 }
@@ -121,7 +122,7 @@ fun ReceivedUserRow(getALunchDto: GetALunchDto){
                 )
                 Spacer(modifier = Modifier.size(10.dp))
                 Text(
-                    text = "${getALunchDto.senderId} ",
+                    text = "${getALunchDto.sender_id} ",
                     style = TextStyle(
                         fontSize = 12.sp,
                         lineHeight = 18.sp,

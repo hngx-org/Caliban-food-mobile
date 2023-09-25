@@ -104,6 +104,7 @@ class SignUpStaff : ComponentActivity() {
 
                         Spacer(modifier = Modifier.height(55.dp))
                         Button(onClick = {
+
                             Intent(this@SignUpStaff, LoginActivity::class.java).also {
                                 startActivity(it)
                             }
