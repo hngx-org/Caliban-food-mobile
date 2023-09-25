@@ -98,6 +98,7 @@ class SignUpActivity : ComponentActivity() {
                         Spacer(modifier = Modifier.height(20.dp))
                         Button(onClick = {
                             Intent(this@SignUpActivity, LoginActivity::class.java).also {
+                                it.putExtra("EntryMessage", isToken)
                                 startActivity(it)
                             }
                             Log.d("Debuggg", "Gooooooo")

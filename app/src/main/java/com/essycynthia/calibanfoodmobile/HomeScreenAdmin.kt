@@ -63,7 +63,7 @@ fun HomeScreenAdmin(
             TopAppBar(
                 title = {
                     Text(
-                        text = "Welcome, ${viewModel.homeState.name} \uD83D\uDC4B",
+                        text = "Welcome, HNG \uD83D\uDC4B",
                         style = CalibanFoodMobileTheme.typography.bodyMedium,
                         color = Grey
                     )
@@ -114,7 +114,7 @@ fun HomeScreenAdmin(
                 .padding(it)
                 .verticalScroll(rememberScrollState())
         ) {
-            FreeLunchSection(freeLunch = viewModel.homeState.freeLunch)
+            FreeLunchSection(freeLunch = 100)
             Spacer(modifier = Modifier.height(16.dp))
             RewardHistorySection(
                 rewardList = viewModel.homeState.rewardList,
@@ -171,7 +171,7 @@ private fun FreeLunchSection(
         )
 
         Button(
-            onClick = { /*TODO*/ },
+            onClick = {  },
             colors = ButtonDefaults.buttonColors(
                 containerColor = Neutral1
             ),

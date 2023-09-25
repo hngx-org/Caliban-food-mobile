@@ -39,7 +39,8 @@ class LoginActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
 
-            var isToken = true
+            val intent = intent
+            val isToken = intent.getBooleanExtra("EntryMessage", true)
 
             CalibanFoodMobileTheme {
 
@@ -74,15 +75,14 @@ class LoginActivity : ComponentActivity() {
                         OutlinedButton(
                             onClick = { if(isToken) {
                                 Intent(this@LoginActivity,
-                                    MainActivityAdmin::class.java).also {
+                                    MainActivity::class.java).also {
                                     startActivity(it) }
                             } else {
                                 Intent(this@LoginActivity,
-                                    MainActivity::class.java).also {
+                                    MainActivityAdmin::class.java).also {
                                     startActivity(it) }
 
                             }
-
                                       },
                             shape = RoundedCornerShape(5.dp),
 
