@@ -1,4 +1,4 @@
-package com.essycynthia.calibanfoodmobile
+package com.essycynthia.calibanfoodmobile.staffNavigation
 
 import android.content.Intent
 import android.os.Bundle
@@ -18,9 +18,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -45,9 +43,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.essycynthia.calibanfoodmobile.R
 import com.essycynthia.calibanfoodmobile.inviteuser.InviteAlertDialog
-import com.essycynthia.calibanfoodmobile.inviteuser.InviteUserOrg
-import com.essycynthia.calibanfoodmobile.staffNavigation.MainActivityAdmin
 import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
 
 class UserInviteActivity : ComponentActivity() {

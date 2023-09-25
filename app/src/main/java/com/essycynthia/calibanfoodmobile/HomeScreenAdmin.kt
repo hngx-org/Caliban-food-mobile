@@ -1,6 +1,5 @@
 package com.essycynthia.calibanfoodmobile
 
-import android.content.Context
 import android.content.Intent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -19,6 +18,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PersonAdd
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.Button
@@ -33,21 +33,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.NavController
 import com.essycynthia.calibanfoodmobile.staffNavigation.MainActivityAdmin
+import com.essycynthia.calibanfoodmobile.staffNavigation.OrgFreeLunchBalanceActivity
+import com.essycynthia.calibanfoodmobile.staffNavigation.UserInviteActivity
 import com.essycynthia.calibanfoodmobile.staffNavigation.viewmodel.HomeViewModel
 import com.essycynthia.calibanfoodmobile.staffNavigation.viewmodel.Reward
 import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
 import com.essycynthia.calibanfoodmobile.ui.theme.Grey
 import com.essycynthia.calibanfoodmobile.ui.theme.Neutral1
 import com.essycynthia.calibanfoodmobile.ui.theme.Primary
-import dagger.hilt.android.qualifiers.ActivityContext
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -90,6 +89,20 @@ fun HomeScreenAdmin(
                         contentDescription = "Search",
                         tint = Grey,
                         modifier = modifier.clickable{}
+                    )
+
+                    Icon(
+                        imageVector = Icons.Filled.Settings,
+                        contentDescription = "Setting",
+                        tint = Grey,
+                        modifier = modifier.clickable {
+                            Intent(
+                                context,
+                                OrgFreeLunchBalanceActivity::class.java
+                            ).also {
+                                context.startActivity(it)
+                            }
+                        }
                     )
 
                 }

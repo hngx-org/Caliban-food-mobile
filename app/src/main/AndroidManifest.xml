@@ -14,7 +14,12 @@
         android:theme="@style/Theme.CalibanFoodMobile"
         tools:targetApi="31">
         <activity
-            android:name=".UserInviteActivity"
+            android:name=".staffNavigation.OrgFreeLunchBalanceActivity"
+            android:exported="false"
+            android:label="@string/title_activity_org_free_lunch_balance"
+            android:theme="@style/Theme.CalibanFoodMobile" />
+        <activity
+            android:name=".staffNavigation.UserInviteActivity"
             android:exported="false"
             android:label="@string/title_activity_user_invite"
             android:theme="@style/Theme.CalibanFoodMobile" />
