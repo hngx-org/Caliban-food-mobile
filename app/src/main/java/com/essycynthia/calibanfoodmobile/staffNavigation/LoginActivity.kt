@@ -20,6 +20,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -29,7 +30,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.essycynthia.calibanfoodmobile.R
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.LoginRequest
 import com.essycynthia.calibanfoodmobile.ui.login_screen.LoginViewModel
@@ -52,6 +52,12 @@ class LoginActivity : ComponentActivity() {
 
                 var loginPassword by remember {
                     mutableStateOf("")
+                }
+
+                val isDataValidated by remember {
+                    derivedStateOf {
+                        loginEmail != "" && loginPassword != ""
+                    }
                 }
 
 
@@ -92,7 +98,9 @@ class LoginActivity : ComponentActivity() {
                             .fillMaxWidth()
                             .padding(
                                 top = 25.dp,
-                            )
+                            ),
+
+                        enabled = isDataValidated
                     ) {
                         Image(modifier = Modifier.size(32.dp),
                             painter = painterResource(id = R.drawable.google_icon),
