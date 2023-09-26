@@ -54,7 +54,6 @@ class LoginActivity : ComponentActivity() {
             val isToken = intent.getBooleanExtra("EntryMessage", true)
 
             CalibanFoodMobileTheme {
-                val viewModel: LoginViewModel by viewModels()
 
                 val viewModel: LoginViewModel = hiltViewModel()
 
@@ -80,7 +79,6 @@ class LoginActivity : ComponentActivity() {
 
 
 
-                    Column(
 
                 Column(
                     modifier = Modifier
@@ -233,28 +231,16 @@ class LoginActivity : ComponentActivity() {
 
                     }
 
-                                border = BorderStroke(
-                                    width = 1.dp,
-                                    color = Primary,
-                                ),
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(
-                                        top = 25.dp,
-                                    )
-                            ) {
-                                /* Image(modifier = Modifier.size(32.dp),
-                                     painter = painterResource(id = R.drawable.google_icon),
-                                     contentDescription = "Google",
-                                     contentScale = ContentScale.Crop)*/
+//                                border = BorderStroke(
+//                                    width = 1.dp,
+//                                    color = Primary,
+//                                ),
+//                                modifier = Modifier
+//                                    .fillMaxWidth()
+//                                    .padding(
+//                                        top = 25.dp,
+//                                    )
 
-                                Text(
-                                    text = "Login",
-                                    color = Neutral2,
-                                    style = CalibanFoodMobileTheme.typography.button,
-                                    fontSize = 14.sp
-                                )
-                            }
                         }
 
                     }
@@ -339,6 +325,34 @@ fun LoginFields(
         )
     }
 }
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun LoginDetailsFields(
+    modifier: Modifier = Modifier.fillMaxWidth(), value: String,
+    label: String,
+    placeholder: String,
+    onValueChaged: (String) -> Unit
+) {
+    OutlinedTextField(
+        shape = RoundedCornerShape(5.dp),
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            focusedBorderColor = Primary,
+            focusedLabelColor = Grey
+        ),
+        modifier = Modifier
+            .fillMaxWidth(),
+        value = value,
+        onValueChange = onValueChaged,
+
+        label = {
+            Text(text = label)
+        },
+        placeholder = {
+            Text(text = placeholder)
+        }
+    )
+}
+
 
 
 
