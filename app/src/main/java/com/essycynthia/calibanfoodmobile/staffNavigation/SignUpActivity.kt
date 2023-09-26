@@ -40,28 +40,21 @@ import com.essycynthia.calibanfoodmobile.ui.theme.Neutral1
 import com.essycynthia.calibanfoodmobile.ui.theme.Neutral2
 import com.essycynthia.calibanfoodmobile.ui.theme.Primary
 
-class SignUpStaff : ComponentActivity() {
+class SignUpActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             CalibanFoodMobileTheme {
-                // A surface container using the 'background' color from the theme
-                /*Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    colo r = MaterialTheme.colorScheme.background
-                ) {
 
-                }*/
+                val intent = intent
+                val isToken = intent.getBooleanExtra("EntryMessage", true)
 
-                //Register()
 
-               // @Composable
-                //fun Register(modifier: Modifier = Modifier) {
                     var email by remember { mutableStateOf("") }
                     var password by remember { mutableStateOf("") }
                     var firstName by remember { mutableStateOf("") }
                     var lastName by remember { mutableStateOf("") }
-                    var confirmPassword by remember { mutableStateOf("") }
+                    var staffToken by remember { mutableStateOf("") }
 
                 val isDataValidated by remember {
                     derivedStateOf {
@@ -73,7 +66,7 @@ class SignUpStaff : ComponentActivity() {
 
                     Column(modifier = Modifier
                         .padding(20.dp)
-                        .padding(top = 50.dp)
+                        .padding(top = 10.dp)
                         .fillMaxWidth()) {
                         Text(
                             text = "Create Account",
@@ -88,7 +81,7 @@ class SignUpStaff : ComponentActivity() {
                             fontSize = 14.sp,
                             modifier = Modifier.padding(top = 8.dp)
                         )
-                        Spacer(modifier = Modifier.height(55.dp))
+                        Spacer(modifier = Modifier.height(30.dp))
 
                         CreateAccountFields(
                             modifier = Modifier.fillMaxWidth(),
@@ -96,21 +89,26 @@ class SignUpStaff : ComponentActivity() {
                             firstName = firstName,
                             lastName = lastName,
                             password = password,
-                            confirmPassword = confirmPassword,
+                            staffToken = staffToken,
+                            isToken = isToken,
                             onEmailChange = {email = it
                             },
+                            onStaffTokenChanged = {staffToken = it},
                             onFirstNameChanged = { firstName= it },
                             onLastNameChanged = {lastName = it },
                             onPasswordChange = {password = it
-                            },
-                            onConfirmPasswordChanged = {confirmPassword = it
                             }
                         )
 
-                        Spacer(modifier = Modifier.height(55.dp))
+                        Spacer(modifier = Modifier.height(20.dp))
                         Button(onClick = {
+<<<<<<< HEAD:app/src/main/java/com/essycynthia/calibanfoodmobile/staffNavigation/SignUpActivity.kt
+                            Intent(this@SignUpActivity, LoginActivity::class.java).also {
+                                it.putExtra("EntryMessage", isToken)
+=======
 
                             Intent(this@SignUpStaff, LoginActivity::class.java).also {
+>>>>>>> Master:app/src/main/java/com/essycynthia/calibanfoodmobile/staffNavigation/SignUpStaff.kt
                                 startActivity(it)
                             }
                             Log.d("Debuggg", "Gooooooo")
@@ -138,12 +136,13 @@ class SignUpStaff : ComponentActivity() {
 @Composable
 fun CreateAccountFields(modifier: Modifier = Modifier.fillMaxWidth(), email: String,
                         firstName : String, lastName: String, password: String,
-                        confirmPassword: String,
+                        isToken: Boolean,
+                        staffToken : String,
                         onEmailChange: (String) -> Unit,
                         onFirstNameChanged: (String) -> Unit,
                         onLastNameChanged: (String) -> Unit,
                         onPasswordChange: (String) -> Unit,
-                        onConfirmPasswordChanged: (String) -> Unit){
+                        onStaffTokenChanged: (String) -> Unit){
 
     var showPassword by remember {
         mutableStateOf(false)
@@ -200,34 +199,24 @@ fun CreateAccountFields(modifier: Modifier = Modifier.fillMaxWidth(), email: Str
     )
     Spacer(modifier = Modifier.height(15.dp))
 
-    DetailsFields(modifier = modifier.fillMaxWidth(),
-        value = confirmPassword,
-        label = "Confirm Password",
-        placeholder = "Confirm Password",
-        onValueChaged = onConfirmPasswordChanged,
-        trailingIcon = {
-            if(showPassword) {
-                IconButton(onClick = { showPassword = false}) {
-                    Icon(
-
-                        imageVector = Icons.Filled.Visibility,
-                        contentDescription = "hide_password"
-                    )
-                }
-            } else {
-                IconButton(onClick = { showPassword = true }) {
-                    Icon(
-                        imageVector = Icons.Filled.VisibilityOff,
-                        contentDescription = "hide_password"
-                    )
-                }
-            }
-        }
-    )
     /* DetailsFields(value = confirmPassword,
          label = "Password",
          placeholder = "Confirm Password",
          onValueChaged = onConfirmPasswordChanged)*/
+
+    if(isToken) {
+        DetailsFields(
+            value = staffToken,
+            label = "Staff Token",
+            placeholder = "Enter Token",
+            onValueChaged = onStaffTokenChanged
+        )
+
+        Spacer(modifier = Modifier.height(15.dp))
+    } else {
+
+    }
+
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

@@ -5,6 +5,13 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.material.Button
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
@@ -22,11 +29,14 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.essycynthia.calibanfoodmobile.data.remote.dto.CreateOrganizationRequest
 
+@OptIn(ExperimentalMaterial3Api::class)
+
 @Composable
 fun RegisterScreen(){
     var companyName by remember { mutableStateOf("") }
     var lunchPrice by remember { mutableStateOf("") }
     var currency by remember { mutableStateOf("") }
+
 
     // for data validation
     val isDataValidated by remember {
@@ -89,8 +99,9 @@ val viewModel : CreateOrganizationViewModel = hiltViewModel()
                 )
             },
             enabled = isDataValidated
-        ) {
+        ){
             Text(text = "Create")
         }
+            }
+
     }
-}

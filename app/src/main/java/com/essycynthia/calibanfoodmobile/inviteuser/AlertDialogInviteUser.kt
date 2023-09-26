@@ -28,7 +28,7 @@ import androidx.compose.ui.window.DialogProperties
 import com.essycynthia.calibanfoodmobile.R
 
 
-@Composable
+ @Composable
 fun InviteAlertDialog(
     openDialog: Boolean,
     onDismissRequest: () -> Unit

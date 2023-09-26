@@ -29,13 +29,8 @@ class EntryActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             CalibanFoodMobileTheme {
-                // A surface container using the 'background' color from the theme
-                /*Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    WelcomeScreen()
-                }*/
+
+                var token = true
                 Column(
                     modifier = Modifier.fillMaxSize()
                         .padding(16.dp)
@@ -54,8 +49,11 @@ class EntryActivity : ComponentActivity() {
 
                     Button(
                         onClick = {
-                            Intent(this@EntryActivity, SignUpStaff::class.java)
-                                .also { startActivity(it)}
+                            token = true
+                            Intent(this@EntryActivity, SignUpActivity::class.java)
+                                .also {
+                                it .putExtra("EntryMessage", token)
+                                    startActivity(it)}
                             },
                         shape = RoundedCornerShape(5.dp),
                         colors = ButtonDefaults.buttonColors(containerColor = Primary),
@@ -67,8 +65,11 @@ class EntryActivity : ComponentActivity() {
 
                     Button(
                         onClick = {
-                            Intent(this@EntryActivity, SignUpAdmin::class.java)
-                                .also { startActivity(it)}
+                            token = false
+                            Intent(this@EntryActivity, SignUpActivity::class.java)
+                                .also {
+                                    it.putExtra("EntryMessage", token)
+                                    startActivity(it)}
                         },
                         shape = RoundedCornerShape(5.dp),
                         colors = ButtonDefaults.buttonColors(containerColor = Primary),
@@ -77,8 +78,6 @@ class EntryActivity : ComponentActivity() {
                         Text(text = "Sign up as an admin", color = Neutral1)
                     }
                 }
-
-
 
             }
         }
