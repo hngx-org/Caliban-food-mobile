@@ -24,6 +24,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -62,7 +63,11 @@ class SignUpStaff : ComponentActivity() {
                     var lastName by remember { mutableStateOf("") }
                     var confirmPassword by remember { mutableStateOf("") }
 
-
+                val isDataValidated by remember {
+                    derivedStateOf {
+                        email != "" && password != "" && firstName != "" && lastName != "" && confirmPassword != ""
+                    }
+                }
                     //var showPassword by remember { mutableStateOf("false") }
 
 
@@ -114,7 +119,9 @@ class SignUpStaff : ComponentActivity() {
                             shape = RoundedCornerShape(5.dp),
                             colors = ButtonDefaults.buttonColors(containerColor = Primary),
                             modifier = Modifier
-                                .fillMaxWidth()) {
+                                .fillMaxWidth(),
+                            enabled = isDataValidated
+                        ) {
                             Text(text = "Continue", color = Neutral1)
 
                         }
