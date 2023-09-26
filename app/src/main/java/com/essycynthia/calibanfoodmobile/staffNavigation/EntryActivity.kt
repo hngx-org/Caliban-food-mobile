@@ -45,7 +45,7 @@ class EntryActivity : ComponentActivity() {
                 ) {
 
                     Text(
-                        text = "Free Launch App",
+                        text = "Free Lunch App",
                         modifier = Modifier,
                         style = CalibanFoodMobileTheme.typography.h1Bold
                     )
