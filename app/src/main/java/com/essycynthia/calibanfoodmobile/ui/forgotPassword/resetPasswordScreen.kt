@@ -1,6 +1,10 @@
-package com.essycynthia.calibanfoodmobile.ui
+package com.essycynthia.calibanfoodmobile.ui.forgotPassword
 
-//import androidx.constraintlayout.compose.Visibility
+import android.content.Intent
+import android.os.Bundle
+import android.util.Log
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,76 +22,103 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
+import com.essycynthia.calibanfoodmobile.staffNavigation.LoginActivity
 import com.essycynthia.calibanfoodmobile.ui.theme.CalibanFoodMobileTheme
+import com.essycynthia.calibanfoodmobile.ui.theme.Grey
 import com.essycynthia.calibanfoodmobile.ui.theme.Neutral1
 import com.essycynthia.calibanfoodmobile.ui.theme.Neutral2
 import com.essycynthia.calibanfoodmobile.ui.theme.Primary
 
-@Composable
-fun Register(modifier: Modifier = Modifier,navController: NavHostController) {
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-    var confirmPassword by remember { mutableStateOf("") }
-    //var showPassword by remember { mutableStateOf("false") }
+class resetPasswordScreen : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            CalibanFoodMobileTheme {
 
+                var email by remember { mutableStateOf("") }
+                var password by remember { mutableStateOf("") }
+                var confirmPassword by remember { mutableStateOf("") }
 
-    Column(modifier = modifier
-        .padding(20.dp)
-        .padding(top = 50.dp)
-        .fillMaxWidth()) {
-        Text(
-            text = "Create Account",
-            style = CalibanFoodMobileTheme.typography.h1Bold,
-            color = Neutral2,
-            fontSize = 28.sp
-        )
-        Text(
-            text = "Sign up with your company email address",
-            style = CalibanFoodMobileTheme.typography.bodyRegular,
-            color = Neutral2,
-            fontSize = 14.sp,
-            modifier = modifier.padding(top = 8.dp)
-        )
-        Spacer(modifier = Modifier.height(55.dp))
+                val isDataValidated by remember {
+                    derivedStateOf {
+                        email != "" && password != "" && confirmPassword != ""
+                    }
+                }
 
-        CreateAccountFields(
-            modifier = modifier.fillMaxWidth(),
-            email = email,
-            password = password,
-            confirmPassword = confirmPassword,
-            onEmailChange = {email = it
-            },
-            onPasswordChange = {password = it
-            },
-            onConfirmPasswordChanged = {confirmPassword = it
+                Column(modifier = Modifier
+                    .padding(20.dp)
+                    .padding(top = 50.dp)
+                    .fillMaxWidth()) {
+                    Text(
+                        text = "Reset Password",
+                        style = CalibanFoodMobileTheme.typography.h1Bold,
+                        color = Neutral2,
+                        fontSize = 28.sp
+                    )
+                    Text(
+                        text = "enter your company email address",
+                        style = CalibanFoodMobileTheme.typography.bodyRegular,
+                        color = Neutral2,
+                        fontSize = 14.sp,
+                        modifier = Modifier.padding(top = 8.dp)
+                    )
+                    Spacer(modifier = Modifier.height(55.dp))
+
+                    CreateAccountFields(
+                        modifier = Modifier.fillMaxWidth(),
+                        email = email,
+                        password = password,
+                        confirmPassword = confirmPassword,
+                        onEmailChange = {email = it
+                        },
+                        onPasswordChange = {password = it
+                        },
+                        onConfirmPasswordChanged = {confirmPassword = it
+                        }
+                    )
+
+                    Spacer(modifier = Modifier.height(55.dp))
+                    Button(onClick = {
+
+                        Intent(this@resetPasswordScreen, LoginActivity::class.java).also {
+                            startActivity(it)
+                        }
+                        Log.d("Debuggg", "Gooooooo")
+
+                    },
+                        shape = RoundedCornerShape(5.dp),
+                        colors = ButtonDefaults.buttonColors(containerColor = Primary),
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        enabled = isDataValidated
+                    ) {
+                        Text(text = "Reset Password", color = Neutral1)
+                    }
+                }
             }
-        )
-
-        Spacer(modifier = Modifier.height(55.dp))
-        Button(onClick = { navController.navigate("reward_screen") },
-            shape = RoundedCornerShape(5.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = Primary),
-            modifier = Modifier
-                .fillMaxWidth()) {
-            Text(text = "Continue", color = Neutral1)
-
         }
     }
 }
 
+
 @Composable
-fun CreateAccountFields(modifier: Modifier = Modifier.fillMaxWidth(), email: String, password: String, confirmPassword: String,
-                        onEmailChange: (String) -> Unit, onPasswordChange: (String) -> Unit,
+fun CreateAccountFields(modifier: Modifier = Modifier.fillMaxWidth(), email: String,
+                        password: String,
+                        confirmPassword: String,
+                        onEmailChange: (String) -> Unit,
+                        onPasswordChange: (String) -> Unit,
                         onConfirmPasswordChanged: (String) -> Unit){
 
     var showPassword by remember {
@@ -101,7 +132,6 @@ fun CreateAccountFields(modifier: Modifier = Modifier.fillMaxWidth(), email: Str
         onValueChaged = onEmailChange)
 
     Spacer(modifier = Modifier.height(15.dp))
-
 
     DetailsFields(modifier = modifier.fillMaxWidth(),
         value = password,
@@ -127,13 +157,14 @@ fun CreateAccountFields(modifier: Modifier = Modifier.fillMaxWidth(), email: Str
             }
         }
     )
+
     Spacer(modifier = Modifier.height(15.dp))
 
     DetailsFields(modifier = modifier.fillMaxWidth(),
-        value = password,
-        label = "Password",
+        value = confirmPassword,
+        label = "Confirm Password",
         placeholder = "Confirm Password",
-        onValueChaged = onPasswordChange,
+        onValueChaged = onConfirmPasswordChanged,
         trailingIcon = {
             if(showPassword) {
                 IconButton(onClick = { showPassword = false}) {
@@ -153,10 +184,6 @@ fun CreateAccountFields(modifier: Modifier = Modifier.fillMaxWidth(), email: Str
             }
         }
     )
-    /* DetailsFields(value = confirmPassword,
-         label = "Password",
-         placeholder = "Confirm Password",
-         onValueChaged = onConfirmPasswordChanged)*/
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -170,6 +197,11 @@ fun DetailsFields(modifier: Modifier = Modifier.fillMaxWidth(), value : String,
                   onValueChaged : (String) -> Unit){
     OutlinedTextField(
         shape = RoundedCornerShape(5.dp),
+
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            focusedBorderColor = Primary,
+            focusedLabelColor = Grey
+        ),
         modifier = Modifier
             .fillMaxWidth(),
         value = value,
@@ -185,4 +217,10 @@ fun DetailsFields(modifier: Modifier = Modifier.fillMaxWidth(), value : String,
         trailingIcon = trailingIcon
     )
 
+}
+
+@Preview(showBackground = true)
+@Composable
+fun resetPasswordPreview() {
+        resetPasswordScreen()
 }

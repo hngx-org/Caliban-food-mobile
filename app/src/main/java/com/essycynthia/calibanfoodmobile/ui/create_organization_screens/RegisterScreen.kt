@@ -12,6 +12,13 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.material.Button
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.Text
+import androidx.compose.material.TextField
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -23,11 +30,21 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.essycynthia.calibanfoodmobile.data.remote.dto.CreateOrganizationRequest
 
 @OptIn(ExperimentalMaterial3Api::class)
+
 @Composable
 fun RegisterScreen(){
     var companyName by remember { mutableStateOf("") }
     var lunchPrice by remember { mutableStateOf("") }
     var currency by remember { mutableStateOf("") }
+
+
+    // for data validation
+    val isDataValidated by remember {
+        derivedStateOf {
+           companyName != "" && lunchPrice != "" && currency != ""
+        }
+    }
+
 val viewModel : CreateOrganizationViewModel = hiltViewModel()
     // Create a state to track the current UI state
     val uiState by viewModel.organizationCreateState.collectAsState()
@@ -80,9 +97,11 @@ val viewModel : CreateOrganizationViewModel = hiltViewModel()
                     accessToken = "your_access_token", // Replace with actual access token
                     CreateOrganizationRequest(companyName, lunchPrice)
                 )
-            }
-        ) {
+            },
+            enabled = isDataValidated
+        ){
             Text(text = "Create")
         }
+            }
+
     }
-}

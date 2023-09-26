@@ -6,12 +6,13 @@ import com.essycynthia.calibanfoodmobile.data.remote.data_classes.GetALunchRespo
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.GetAllLunchesResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.LoginRequest
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.LoginResponse
+import com.essycynthia.calibanfoodmobile.data.remote.data_classes.ReceivedLunches
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.RedeemLunchRequest
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.RedeemLunchResponse
+import com.essycynthia.calibanfoodmobile.data.remote.data_classes.ResetPasswordEmail
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.SendLunchResponse
+import com.essycynthia.calibanfoodmobile.data.remote.data_classes.SentLunchResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.SignUpRequest
-import com.essycynthia.calibanfoodmobile.data.remote.data_classes.SignUpResponse
-import com.essycynthia.calibanfoodmobile.data.remote.data_classes.StaffSignUpResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.UpdateOrganizationLaunchPriceResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.UpdateOrganizationLaunchWalletBalanceResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.UserProfileResponse
@@ -99,6 +100,16 @@ interface FoodApi {
         @Header("Authorization") token: String
     ): GetAllLunchesResponse
 
+    @GET("api/lunch/sent")
+    suspend fun getSentLunches(
+        @Header("Authorization") token: String
+    ): SentLunchResponse
+
+    @GET("api/lunch/received")
+    suspend fun getReceivedLunches(
+        @Header("Authorization") token: String
+    ): ReceivedLunches
+
     @POST("api/user/redeem")
     suspend fun redeemLunch(
         @Header("Authorization") token: String,
@@ -110,6 +121,21 @@ interface FoodApi {
         @Header("Authorization") token: String,
         @Body request: WithdrawalRequest
     ): WithdrawalResponse
+
+
+
+        @POST("api/auth/reset-request")
+        suspend fun resetRequest(
+            @Header("Authorization") authorization: String, // Header for Bearer Token
+            @Field("email") email: String
+        ): ResetPasswordEmail
+    @POST("api/auth/reset-password")
+    suspend fun resetPasswordRequest(
+        @Header("Authorization") authorization: String, // Header for Bearer Token
+        @Field("email") email: String,
+        @Field("password") password: String
+    ): ResetPassword
+
 
 
 }

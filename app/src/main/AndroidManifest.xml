@@ -47,6 +47,11 @@
             android:label="@string/title_activity_sign_up_admin"
             android:theme="@style/Theme.CalibanFoodMobile" />
         <activity
+            android:name=".ui.forgotPassword.resetPasswordScreen"
+            android:exported="false"
+            android:label="@string/title_reset_password"
+            android:theme="@style/Theme.CalibanFoodMobile"/>
+        <activity
             android:name=".staffNavigation.EntryActivity"
             android:exported="true"
             android:label="@string/title_activity_entry"

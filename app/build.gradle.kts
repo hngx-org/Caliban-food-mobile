@@ -8,13 +8,12 @@ plugins {
 
 android {
     namespace = "com.essycynthia.calibanfoodmobile"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.essycynthia.calibanfoodmobile"
-        //changed minimum api to 26 from 24
-        minSdk = 26
-        targetSdk = 33
+        minSdk = 24
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -52,10 +51,6 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-    kotlinOptions {
-        //jvmTarget = "1.8"
-        jvmTarget = "17"
-    }
 }
 
 dependencies {
@@ -69,6 +64,8 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     implementation ("androidx.navigation:navigation-compose:2.5.3")
+    implementation ("androidx.compose.material:material:1.4.2")
+
 
 
     //Serialization
@@ -85,6 +82,10 @@ dependencies {
     //Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1")
+
+    //emoji
+    implementation ("androidx.emoji2:emoji2-emojipicker:1.4.0-beta05")
+
 
     // Glide
     implementation ("com.github.bumptech.glide:glide:4.16.0")
@@ -117,8 +118,14 @@ dependencies {
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
+    implementation("androidx.compose.ui:ui-android:1.5.1")
+    implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
     kapt("com.google.dagger:hilt-android-compiler:2.46.1")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+
+    //LiveData
+    implementation ("androidx.compose.runtime:runtime-livedata:1.6.0-alpha06")
+
 
 
     // Retrofit
