@@ -8,6 +8,11 @@
     <string name="title_activity_sign_up_admin">SignUpAdmin</string>
     <string name="title_activity_sign_up_staff">SignUpStaff</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_home_screen_admin">HomeScreenAdmin</string>
+    <string name="title_activity_user_invite">UserInviteActivity</string>
+    <string name="title_activity_org_free_lunch_balance">OrgFreeLunchBalance</string>
+
     <string name="title_reset_password">ResetPassword</string>
+
     <string name="title_activity_enter_otp_screen">EnterOtpScreen</string>
 </resources>

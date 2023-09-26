@@ -16,22 +16,35 @@
         android:theme="@style/Theme.CalibanFoodMobile"
         tools:targetApi="31">
         <activity
+            android:name=".staffNavigation.OrgFreeLunchBalanceActivity"
+            android:exported="false"
+            android:label="@string/title_activity_org_free_lunch_balance"
+            android:theme="@style/Theme.CalibanFoodMobile" />
+        <activity
+            android:name=".staffNavigation.UserInviteActivity"
+            android:exported="false"
+            android:label="@string/title_activity_user_invite"
+            android:theme="@style/Theme.CalibanFoodMobile" />
+       <!-- <activity
+            android:name=".HomeScreenAdmin"
+            android:exported="false"
+            android:label="@string/title_activity_home_screen_admin"
             android:name=".ui.forgotPassword.enterOtpScreen"
             android:exported="false"
             android:label="@string/title_activity_enter_otp_screen"
-            android:theme="@style/Theme.CalibanFoodMobile" />
+            android:theme="@style/Theme.CalibanFoodMobile" />-->
         <activity
             android:name=".staffNavigation.LoginActivity"
             android:exported="false"
             android:label="@string/title_activity_login"
             android:theme="@style/Theme.CalibanFoodMobile" />
         <activity
-            android:name=".staffNavigation.SignUpStaff"
+            android:name=".staffNavigation.SignUpActivity"
             android:exported="false"
             android:label="@string/title_activity_sign_up_staff"
             android:theme="@style/Theme.CalibanFoodMobile" />
         <activity
-            android:name=".staffNavigation.SignUpAdmin"
+            android:name=".staffNavigation.MainActivityAdmin"
             android:exported="false"
             android:label="@string/title_activity_sign_up_admin"
             android:theme="@style/Theme.CalibanFoodMobile" />

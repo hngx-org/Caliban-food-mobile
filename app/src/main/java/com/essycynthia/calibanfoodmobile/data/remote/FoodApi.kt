@@ -13,8 +13,6 @@ import com.essycynthia.calibanfoodmobile.data.remote.data_classes.ResetPasswordE
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.SendLunchResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.SentLunchResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.SignUpRequest
-import com.essycynthia.calibanfoodmobile.data.remote.data_classes.SignUpResponse
-import com.essycynthia.calibanfoodmobile.data.remote.data_classes.StaffSignUpResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.UpdateOrganizationLaunchPriceResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.UpdateOrganizationLaunchWalletBalanceResponse
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.UserProfileResponse
@@ -123,6 +121,7 @@ interface FoodApi {
         @Header("Authorization") token: String,
         @Body request: WithdrawalRequest
     ): WithdrawalResponse
+
 
 
         @POST("api/auth/reset-request")

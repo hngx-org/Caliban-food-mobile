@@ -121,19 +121,10 @@ class MainActivity : ComponentActivity() {
                     }
                 }
             }
-            /*CalibanFoodMobileTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-
-
-                }
-            }*/
         }
     }
 }
+
 
 
 @RequiresApi(Build.VERSION_CODES.Q)
