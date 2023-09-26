@@ -34,6 +34,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.essycynthia.calibanfoodmobile.R
 import com.essycynthia.calibanfoodmobile.data.remote.data_classes.LoginRequest
 import com.essycynthia.calibanfoodmobile.ui.login_screen.LoginViewModel
