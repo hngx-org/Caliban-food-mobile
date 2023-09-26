@@ -48,7 +48,12 @@ class LoginActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+
+            val intent = intent
+            val isToken = intent.getBooleanExtra("EntryMessage", true)
+
             CalibanFoodMobileTheme {
+                val viewModel: LoginViewModel by viewModels()
 
                 val viewModel: LoginViewModel = hiltViewModel()
 
@@ -60,13 +65,21 @@ class LoginActivity : ComponentActivity() {
                     mutableStateOf("")
                 }
 
-                val isDataValidated by remember {
-                    derivedStateOf {
-                        loginEmail != "" && loginPassword != ""
+                Column(
+                    modifier = Modifier
+                        .padding(20.dp)
+                        .padding(top = 50.dp)
+                ) {
+                    val isDataValidated by remember {
+                        derivedStateOf {
+                            loginEmail != "" && loginPassword != ""
+                        }
                     }
-                }
 
 
+
+
+                    Column(
 
                 Column(
                     modifier = Modifier
@@ -104,10 +117,94 @@ class LoginActivity : ComponentActivity() {
                             color = Primary,
                         ),
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(
-                                top = 25.dp,
+                            .padding(20.dp)
+                            .padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = "Login",
+                            style = CalibanFoodMobileTheme.typography.h1Bold,
+                            color = Neutral2,
+                            fontSize = 28.sp
+                        )
+                        Text(
+                            text = "Login to start receiving free launch from collegues",
+                            style = CalibanFoodMobileTheme.typography.bodyRegular,
+                            color = Neutral2,
+                            fontSize = 14.sp,
+                            modifier = Modifier.padding(top = 8.dp)
+                        )
+
+                        LoginFields(email = loginEmail, password = loginPassword,
+                            onEmailChange = { loginEmail = it },
+                            onPasswordChange = { loginPassword = it })
+
+
+                        OutlinedButton(
+                            onClick = {
+                                viewModel.login(LoginRequest(loginEmail, loginPassword))
+                                Intent(this@LoginActivity, MainActivity::class.java).also {
+                                    startActivity(it)
+                                }
+                            },
+                            shape = RoundedCornerShape(5.dp),
+
+                            border = BorderStroke(
+                                width = 1.dp,
+                                color = Primary,
                             ),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(
+                                    top = 25.dp,
+                                ),
+
+                            enabled = isDataValidated
+                        ) {
+                            Image(
+                                modifier = Modifier.size(32.dp),
+                                painter = painterResource(id = R.drawable.google_icon),
+                                contentDescription = "Google",
+                                contentScale = ContentScale.Crop
+                            )
+
+                            Text(
+                                text = "Login",
+                                color = Neutral2,
+                                fontSize = 28.sp
+                            )
+                            Text(
+                                text = "Login to start receiving free launch from collegues",
+                                style = CalibanFoodMobileTheme.typography.bodyRegular,
+                                color = Neutral2,
+                                fontSize = 14.sp,
+                                modifier = Modifier.padding(top = 8.dp)
+                            )
+
+                            LoginFields(email = loginEmail, password = loginPassword,
+                                onEmailChange = { loginEmail = it },
+                                onPasswordChange = { loginPassword = it })
+
+
+                            OutlinedButton(
+                                onClick = {
+                                    if (isToken) {
+                                        Intent(
+                                            this@LoginActivity,
+                                            MainActivity::class.java
+                                        ).also {
+                                            startActivity(it)
+                                        }
+                                    } else {
+                                        Intent(
+                                            this@LoginActivity,
+                                            MainActivityAdmin::class.java
+                                        ).also {
+                                            startActivity(it)
+                                        }
+
+                                    }
+                                },
+                                shape = RoundedCornerShape(5.dp),
 
                         enabled = isDataValidated
                     ) {
@@ -135,12 +232,55 @@ class LoginActivity : ComponentActivity() {
 
                     }
 
+                                border = BorderStroke(
+                                    width = 1.dp,
+                                    color = Primary,
+                                ),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(
+                                        top = 25.dp,
+                                    )
+                            ) {
+                                /* Image(modifier = Modifier.size(32.dp),
+                                     painter = painterResource(id = R.drawable.google_icon),
+                                     contentDescription = "Google",
+                                     contentScale = ContentScale.Crop)*/
 
+                                Text(
+                                    text = "Login",
+                                    color = Neutral2,
+                                    style = CalibanFoodMobileTheme.typography.button,
+                                    fontSize = 14.sp
+                                )
+                            }
+                        }
+
+                    }
+                }
 
                 }
             }
         }
     }
+}
+
+
+@Composable
+fun LoginFields(
+    modifier: Modifier = Modifier.fillMaxWidth(),
+    email: String,
+    password: String,
+    onEmailChange: (String) -> Unit,
+    onPasswordChange: (String) -> Unit,
+) {
+    LoginDetailsFields(
+        value = email,
+        label = "Email Address",
+        placeholder = "Enter your email address",
+        onValueChaged = onEmailChange // Correct callback for email field
+    )
+
 
 
     @Composable
@@ -198,6 +338,7 @@ class LoginActivity : ComponentActivity() {
         )
     }
 }
+
 
 
 /*

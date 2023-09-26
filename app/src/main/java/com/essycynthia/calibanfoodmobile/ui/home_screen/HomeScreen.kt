@@ -1,3 +1,6 @@
+package com.essycynthia.calibanfoodmobile.ui.home_screen/*
+=======
+>>>>>>> Master
 package com.essycynthia.calibanfoodmobile.ui.home_screen
 
 import android.annotation.SuppressLint
@@ -89,4 +92,7 @@ fun HomeScreen() {
         }
     )
 }
+
+<<<<<<< HEAD
+*/
 
